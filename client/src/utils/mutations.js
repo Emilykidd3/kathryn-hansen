@@ -23,8 +23,8 @@ export const ADD_ADMIN = gql`
 `;
 
 export const ADD_GALLERY = gql`
-  mutation addGallery($title: String, $image: String) {
-    addGallery(title: $title, image: $image) {
+  mutation addGallery($title: String, $description: String, $image: String) {
+    addGallery(title: $title, description: $description, image: $image) {
       title
       description
       image
