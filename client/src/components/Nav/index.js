@@ -1,57 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
-
-const NavMain = styled.nav`
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-`
-
-const StyledNavList = styled.ul`
-    list-style-type: none;
-`
-
-const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: #4C5760;
-`
-
-function Nav() {
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
+} from 'reactstrap';
+function Navigation() {
   return (
-      <NavMain>
+      <Navbar>
         <div>
-          <StyledNavList>
-            <li>
-              <StyledLink to="/">Home</StyledLink>
-            </li>
-            <li>
-              <StyledLink to="/about">About</StyledLink>
-            </li>
-            <li>
-              <StyledLink to="/gallery">Gallery</StyledLink>
-            </li>
-          </StyledNavList>
-          <StyledLink
+          <Nav>
+            <NavItem>
+              <Link to="/">Home</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/about">About</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/gallery">Gallery</Link>
+            </NavItem>
+          </Nav>
+          <Link
             to="/"
           >
             Kathryn Hansen
-          </StyledLink>
-          <StyledNavList>
-            <li>
-              <StyledLink to="/contact">Contact</StyledLink>
-            </li>
-            <li>
-              <StyledLink to="/events">Events</StyledLink>
-            </li>
-            <li>
-              <StyledLink to="/">Shop</StyledLink>
-            </li>
-          </StyledNavList>
+          </Link>
+          <Nav>
+            <NavItem>
+              <Link to="/contact">Contact</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/events">Events</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/">Shop</Link>
+            </NavItem>
+          </Nav>
         </div>
-      </NavMain>
+      </Navbar>
   );
 }
-
-export default Nav;
+export default Navigation;
