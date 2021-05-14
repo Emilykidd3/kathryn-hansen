@@ -78,8 +78,8 @@ export const QUERY_TAG_GALLERY = gql`
 `;
 
 export const QUERY_ONE_GALLERY = gql`
-  query getGallery($tag: ID) {
-    gallery(tag: $tag) {
+  query gallery($id: ID) {
+    gallery(_id: $id) {
       _id
       title
       description

@@ -65,18 +65,17 @@ const resolvers = {
       return { token, admin };
     },
 
-    addGallery: async (parent, args) => {
-      // if (context.admin) {
-      //   const gallery = await Gallery.create({
-      //     ...args,
-      //     email: context.admin.email,
-      // });
+    addGallery: async (_, args, context) => {
+      if (context.admin) {
+        const gallery = await Gallery.create({
+          ...args,
+          email: context.admin.email,
+        });
+        // await Admin.create(args);
+        return gallery;
+      }
 
-      await Admin.create(args);
-      return;
-      // }
-
-      // throw new AuthenticationError("You need to be an admin!");
+      throw new AuthenticationError("You need to be an admin!");
     },
 
     addEvents: async (parent, args, context) => {

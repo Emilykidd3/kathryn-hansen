@@ -1,6 +1,26 @@
 const { gql } = require("apollo-server-express");
+const { GraphQLScalarType, Kind } = require("graphql");
+const dateScalar = new GraphQLScalarType({
+  name: "Date",
+  description: "Date custom scalar type",
+  serialize(value) {
+    return value.getTime(); // Convert outgoing Date to integer for JSON
+  },
+  parseValue(value) {
+    return new Date(value); // Convert incoming integer to Date
+  },
+  parseLiteral(ast) {
+    if (ast.kind === Kind.INT) {
+      return new Date(parseInt(ast.value, 10)); // Convert hard-coded AST string to integer and then to Date
+    }
+    return null; // Invalid hard-coded value (not an integer)
+  },
+});
 
 const typeDefs = gql`
+  scaler Date
+  scaler Time
+
   type Tags {
     _id: ID
     name: String
@@ -25,7 +45,7 @@ const typeDefs = gql`
     city: String
     state: String
     zip: String
-    date: String
+    date: Date
     startTime: String
     endTime: String
     link: String
