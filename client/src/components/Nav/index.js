@@ -1,43 +1,56 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
+
+const NavMain = styled.nav`
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+`
+
+const StyledNavList = styled.ul`
+    list-style-type: none;
+`
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: #4C5760;
+`
 
 function Nav() {
   return (
-    <header>
-      <nav className="">
-        <div className="nav-wrapper container white-text">
-          <ul className="right">
+      <NavMain>
+        <div>
+          <StyledNavList>
             <li>
-              <Link to="/">Home</Link>
+              <StyledLink to="/">Home</StyledLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <StyledLink to="/about">About</StyledLink>
             </li>
             <li>
-              <Link to="/gallery">Gallery</Link>
+              <StyledLink to="/gallery">Gallery</StyledLink>
             </li>
-          </ul>
-          <Link
+          </StyledNavList>
+          <StyledLink
             to="/"
-            className="brand-logo center"
-            style={{ fontSize: "150%" }}
           >
             Kathryn Hansen
-          </Link>
-          <ul className="left">
+          </StyledLink>
+          <StyledNavList>
             <li>
-              <Link to="/contact">Contact</Link>
+              <StyledLink to="/contact">Contact</StyledLink>
             </li>
             <li>
-              <Link to="/events">Events</Link>
+              <StyledLink to="/events">Events</StyledLink>
             </li>
             <li>
-              <Link to="/">Shop</Link>
+              <StyledLink to="/">Shop</StyledLink>
             </li>
-          </ul>
+          </StyledNavList>
         </div>
-      </nav>
-    </header>
+      </NavMain>
   );
 }
 
