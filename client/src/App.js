@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Route, Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 
@@ -15,21 +15,17 @@ import Nav from "./components/Nav";
 // import { StoreProvider } from './utils/GlobalState';
 
 // are we / should we be using a token
-const client = new ApolloClient(
-  { uri: '/graphql' }
-  );
-  
-//   {
-//   request: (operation) => {
-//     const token = localStorage.getItem("id_token");
-//     operation.setContext({
-//       headers: {
-//         authorization: token ? `Bearer ${token}` : "",
-//       },
-//     });
-//   },
-//   uri: "/graphql",
-// });
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem("id_token");
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+  },
+  uri: "/graphql",
+});
 
 function App() {
   return (
@@ -43,7 +39,7 @@ function App() {
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/events" component={Events} />
-            <Route exact path="/" />
+
             <Route component={NoMatch} />
           </Switch>
         </div>
