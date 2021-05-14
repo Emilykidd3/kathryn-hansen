@@ -78,34 +78,57 @@ const resolvers = {
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    addEvents: async (parent, args, context) => {
+    addEvents: async (_, args, context) => {
       if (context.admin) {
         const event = await Events.create({
           ...args,
           email: context.admin.email,
         });
 
-        await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $push: { events: event._id } },
-          { new: true }
-        );
         return event;
       }
 
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    addTags: async (parent, args, context) => {
+    addTags: async (_, args, context) => {
       if (context.admin) {
         const tag = await Tags.create({ ...args, email: context.admin.email });
 
-        await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $push: { tag: tag._id } },
+        return tag;
+      }
+
+      throw new AuthenticationError("You need to be an admin!");
+    },
+
+    updateGallery: async (_, args, context) => {
+      if (context.admin) {
+        const originalGallery = await Gallery.findById(args._id).exec(); 
+        console.log(originalGallery + "OG")
+
+        const updatedGallery = await Gallery.findByIdAndUpdate(
+          { _id: args._id },
+          { $set: { title: args.title, description: args.description, image: args.image, link: args.link, size: args.size, price: args.price, availability: args.availability } },
           { new: true }
         );
-        return tag;
+          console.log(updatedGallery + "UG")
+        if (!originalGallery) {
+          throw new Error(`Couldn't find image with id`);
+        }
+        // if (updatedGallery.title == undefined) {
+        //   updatedGallery.title = originalGallery.title; 
+        // } 
+        if (args.title == undefined) {
+          updatedGallery.title = originalGallery.title;
+        }
+        // if (updatedGallery.description == undefined) {
+        //   updatedGallery.description = originalGallery.description;
+        // }
+        if (args.description == undefined) {
+          updatedGallery.description = originalGallery.description;
+        }
+        console.log(updatedGallery + "UG2")
+        return updatedGallery;
       }
 
       throw new AuthenticationError("You need to be an admin!");
@@ -116,20 +139,6 @@ const resolvers = {
         const updatedAdmin = await Admin.findByIdAndUpdate(
           { _id: context.admin._id },
           { $addToSet: { events: event._id } },
-          { new: true }
-        );
-
-        return updatedAdmin;
-      }
-
-      throw new AuthenticationError("You need to be an admin!");
-    },
-
-    updateGallery: async (parent, args, context) => {
-      if (context.admin) {
-        const updatedAdmin = await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $addToSet: { gallery: gallery._id } },
           { new: true }
         );
 
