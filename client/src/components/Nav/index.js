@@ -6,12 +6,16 @@ import styled from "styled-components";
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
+  :hover {
+    color: white;
+  }
+  font-weight: lighter;
 `;
 
 function Navigation() {
   return (
     <Navbar light expand="md" style={{ background: "transparent", position: "absolute"}} fixed="top">
-      <Nav className="container-fluid" navbar style={{ width: "20%" }}>
+      <Nav className="container-fluid" navbar style={{ width: "18%" }}>
         <NavItem className="ml-auto">
           <StyledLink to="/">HOME</StyledLink>
         </NavItem>
@@ -23,11 +27,11 @@ function Navigation() {
         </NavItem>
       </Nav>
 
-      <NavbarBrand style={{ marginLeft: "10px", marginRight: "10px", fontSize: "40px" }}>
+      <NavbarBrand style={{ marginLeft: "10px", marginRight: "10px", fontSize: "40px", fontWeight: "lighter" }}>
         KATHRYN HANSEN
       </NavbarBrand>
 
-      <Nav className="container-fluid" navbar style={{ width: "20%" }}>
+      <Nav className="container-fluid" navbar style={{ width: "18%" }}>
         <NavItem className="mr-auto">
           <StyledLink to="/contact">CONTACT</StyledLink>
         </NavItem>
@@ -37,7 +41,7 @@ function Navigation() {
         <NavItem className="mr-auto">
           <NavLink
             href="https://fineartamerica.com/profiles/kathryn-hansen"
-            style={{ color: "black" }}
+            style={{ color: "black", fontWeight: "lighter" }}
           >
             SHOP
           </NavLink>
