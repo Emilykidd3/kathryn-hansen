@@ -10,27 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "apollo-boost": "^0.4.9",
->>>>>>> a41f2d5ebd18d63d8d35d3a0d2816912f6dcd9f9
     "apollo-server-express": "^2.24.0",
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "graphql": "^15.5.0",
-<<<<<<< HEAD
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.9"
-  }
-=======
-    "graphql-tag": "^2.12.4",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "mongoose": "^5.12.9",
-    "nodemon": "^2.0.7",
-    "react-router-dom": "^5.2.0"
+    "nodemon": "^2.0.7"
   },
   "devDependencies": {},
   "description": ""
->>>>>>> a41f2d5ebd18d63d8d35d3a0d2816912f6dcd9f9
 }
