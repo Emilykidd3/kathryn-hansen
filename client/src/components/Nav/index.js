@@ -28,7 +28,7 @@ function Navigation() {
       </Nav>
 
       <NavbarBrand style={{ marginLeft: "10px", marginRight: "10px", fontSize: "40px", fontWeight: "lighter" }}>
-        KATHRYN HANSEN
+        K A T H R Y N &nbsp;  H A N S E N
       </NavbarBrand>
 
       <Nav className="container-fluid" navbar style={{ width: "18%" }}>
