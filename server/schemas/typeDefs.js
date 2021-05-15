@@ -1,25 +1,29 @@
+// need time scaler and update tags in Gallery
+
 const { gql } = require("apollo-server-express");
-const { GraphQLScalarType, Kind } = require("graphql");
-const dateScalar = new GraphQLScalarType({
-  name: "Date",
-  description: "Date custom scalar type",
-  serialize(value) {
-    return value.getTime(); // Convert outgoing Date to integer for JSON
-  },
-  parseValue(value) {
-    return new Date(value); // Convert incoming integer to Date
-  },
-  parseLiteral(ast) {
-    if (ast.kind === Kind.INT) {
-      return new Date(parseInt(ast.value, 10)); // Convert hard-coded AST string to integer and then to Date
-    }
-    return null; // Invalid hard-coded value (not an integer)
-  },
-});
+
+// const { GraphQLScalarType, Kind } = require("graphql");
+// const dateScalar = new GraphQLScalarType({
+//   name: "Date",
+//   description: "Date custom scalar type",
+//   serialize(value) {
+//     return value.getTime(); // Convert outgoing Date to integer for JSON
+//   },
+//   parseValue(value) {
+//     return new Date(value); // Convert incoming integer to Date
+//   },
+//   parseLiteral(ast) {
+//     if (ast.kind === Kind.INT) {
+//       return new Date(parseInt(ast.value, 10)); // Convert hard-coded AST string to integer and then to Date
+//     }
+//     return null; // Invalid hard-coded value (not an integer)
+//   },
+// });
+
+// scaler Time
+// scaler Date
 
 const typeDefs = gql`
-  scaler Date
-  scaler Time
 
   type Tags {
     _id: ID
@@ -32,7 +36,6 @@ const typeDefs = gql`
     description: String
     image: String
     link: String
-    tag: Tags
     size: String
     price: Float
     availability: String
@@ -45,7 +48,7 @@ const typeDefs = gql`
     city: String
     state: String
     zip: String
-    date: Date
+    date: String
     startTime: String
     endTime: String
     link: String
@@ -65,7 +68,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    galleries(tag: ID, title: String): [Gallery]
+    galleries: [Gallery]
     gallery(_id: ID!): Gallery
     events(title: String): [Events]
     event(_id: ID!): Events
@@ -76,16 +79,45 @@ const typeDefs = gql`
   type Mutation {
     addAdmin(email: String!, password: String!): Auth
     updateAdmin(email: String, password: String): Admin
-    addGallery(title: String, image: String): Gallery
-    updateGallery(_id: ID!): Gallery
+    addGallery(
+      title: String, 
+      description: String,
+      image: String,
+      link: String,
+      size: String,
+      price: Float,
+      availability: String): Gallery
+    updateGallery(
+      _id: ID!,
+      title: String,
+      description: String,
+      image: String,
+      link: String,
+      size: String,
+      price: Float,
+      availability: String): Gallery
     deleteGallery(_id: ID!): Gallery
     addEvents(
-      title: String
-      date: String
-      startTime: String
-      endTime: String
-    ): Events
-    updateEvents(_id: ID!): Events
+      title: String,
+      address: String,
+      city: String,
+      state: String,
+      zip: String,
+      date: String,
+      startTime: String,
+      endTime: String,
+      link: String): Events
+    updateEvents(
+      _id: ID!,
+      title: String,
+      address: String,
+      city: String,
+      state: String,
+      zip: String,
+      date: String,
+      startTime: String,
+      endTime: String,
+      link: String): Events
     deleteEvents(_id: ID!): Events
     addTags(name: String): Tags
     updateTags(_id: ID!, name: String): Tags

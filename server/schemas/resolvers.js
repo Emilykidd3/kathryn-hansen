@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Admin, Events, Gallery } = require("../models");
+const { Admin, Events, Gallery, Tags } = require("../models");
 const { signToken } = require("../utils/auth");
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -35,10 +35,10 @@ const resolvers = {
         };
       }
 
-      return await Events.find(params).populate("title");
+      return await Events.find(params)
     },
     event: async (parent, { _id }) => {
-      return await Events.findById(_id).populate("title");
+      return await Events.findById(_id)
     },
     admin: async (parent, args, context) => {
       if (context.admin) {
@@ -78,78 +78,71 @@ const resolvers = {
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    addEvents: async (parent, args, context) => {
+    addEvents: async (_, args, context) => {
       if (context.admin) {
         const event = await Events.create({
           ...args,
           email: context.admin.email,
         });
-
-        await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $push: { events: event._id } },
-          { new: true }
-        );
+        // await Admin.create(args);
         return event;
       }
 
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    addTags: async (parent, args, context) => {
+    addTags: async (_, args, context) => {
       if (context.admin) {
-        const tag = await Tags.create({ ...args, email: context.admin.email });
-
-        await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $push: { tag: tag._id } },
-          { new: true }
-        );
+        const tag = await Tags.create({
+          ...args,
+          email: context.admin.email,
+        });
+        // await Admin.create(args);
         return tag;
       }
 
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    updateEvents: async (parent, args, context) => {
+    updateGallery: async (_, args, context) => {
       if (context.admin) {
-        const updatedAdmin = await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $addToSet: { events: event._id } },
+        const updatedGallery = await Gallery.findByIdAndUpdate(
+          { _id: args._id },
+          {
+            $set: { ...args },
+          },
           { new: true }
         );
-
-        return updatedAdmin;
+        return updatedGallery;
       }
-
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    updateGallery: async (parent, args, context) => {
+    updateEvents: async (_, args, context) => {
       if (context.admin) {
-        const updatedAdmin = await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $addToSet: { gallery: gallery._id } },
+        const updatedEvent = await Events.findByIdAndUpdate(
+          { _id: args._id },
+          {
+            $set: { ...args },
+          },
           { new: true }
         );
-
-        return updatedAdmin;
+        return updatedEvent;
       }
-
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    updateTags: async (parent, args, context) => {
+    updateTags: async (_, args, context) => {
       if (context.admin) {
-        const updatedAdmin = await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $addToSet: { tag: tag._id } },
+        const updatedTag = await Tags.findByIdAndUpdate(
+          { _id: args._id },
+          {
+            $set: { ...args },
+          },
           { new: true }
         );
-
-        return updatedAdmin;
+        return updatedTag;
       }
-
       throw new AuthenticationError("You need to be an admin!");
     },
 
@@ -163,45 +156,33 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
 
-    deleteGallery: async (parent, args, context) => {
+    deleteGallery: async (_, args, context) => {
       if (context.admin) {
-        const updatedAdmin = await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $pull: { gallery: { _id: args._id } } },
-          { new: true }
+        const deletedGallery = await Gallery.findByIdAndDelete(
+          { _id: args._id },
         );
-
-        return updatedAdmin;
+        return deletedGallery;
       }
-
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    deleteEvents: async (parent, args, context) => {
+    deleteEvents: async (_, args, context) => {
       if (context.admin) {
-        const updatedAdmin = await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $pull: { events: { _id: args._id } } },
-          { new: true }
+        const deletedEvent = await Events.findByIdAndDelete(
+          { _id: args._id },
         );
-
-        return updatedAdmin;
+        return deletedEvent;
       }
-
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    deleteTags: async (parent, args, context) => {
+    deleteTags: async (_, args, context) => {
       if (context.admin) {
-        const updatedAdmin = await Admin.findByIdAndUpdate(
-          { _id: context.admin._id },
-          { $pull: { tag: { _id: args._id } } },
-          { new: true }
+        const deletedTag = await Tags.findByIdAndDelete(
+          { _id: args._id },
         );
-
-        return updatedAdmin;
+        return deletedTag;
       }
-
       throw new AuthenticationError("You need to be an admin!");
     },
 
