@@ -1,5 +1,5 @@
 const db = require("./connection");
-const { Gallery, Tags } = require("../models");
+const { Gallery, Tags, Admin } = require("../models");
 
 db.once("open", async () => {
   await Tags.deleteMany();
@@ -20,7 +20,7 @@ db.once("open", async () => {
       description: "Colored Pencil on Paper",
       //   image: 'cookie-tin.jpg',
       link: null,
-      tag: tags[2].name,
+      tag: tags[2],
       size: "12x20",
       price: 2425,
       availability: "Available",
@@ -30,7 +30,7 @@ db.once("open", async () => {
       description: "Colored Pencil on Paper",
       //   image: 'cookie-tin.jpg',
       link: null,
-      tag: tags[3].name,
+      tag: tags[3],
       size: "13x17.5",
       price: 2300,
       availability: "Available",
@@ -40,7 +40,7 @@ db.once("open", async () => {
       description: "Colored Pencil on Paper",
       //   image: 'cookie-tin.jpg',
       link: "https://fineartamerica.com/featured/tell-tail-sign-kathryn-hansen.html",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "Original no longer for sale. Prints are available",
       price: null,
       availability: "Available",
@@ -51,7 +51,7 @@ db.once("open", async () => {
         "Colored Pencil on Paper. A shaggy haired bear I named Blu Berry has taken a pit stop from his busy morning of berry hunting. His favorites are blue and lingonberry but on occasion he does love to find a good huckleberry!",
       //image:
       link: "https://fineartamerica.com/featured/a-kodiak-moment-kathryn-hansen.html",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "Original no longer for sale. Prints are available.",
       price: null,
       availability: "Available",
@@ -62,7 +62,7 @@ db.once("open", async () => {
         "Colored Pencil on Paper. Scout is just hanging in there, taking a lazy afternoon snooze!",
       //image:
       link: "https://fineartamerica.com/featured/bearly-awake-kathryn-hansen.html",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "Original no longer for sale. Prints are available.",
       price: null,
       availability: "Available",
@@ -73,7 +73,7 @@ db.once("open", async () => {
         "Colored Pencil on Paper. Great Horned owl drawing from Southern California area.",
       //image:
       link: "https://fineartamerica.com/featured/owl-by-myself-kathryn-hansen.html",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "Original no longer for sale. Prints are available.",
       price: null,
       availability: "Available",
@@ -84,7 +84,7 @@ db.once("open", async () => {
         "Colored Pencil on Paper. This sweet bear was actually drawn as a 5 page tutorial for a colored pencil book called Draw Wildlife in Colored Pencil through Ann Kullberg publication.",
       //image:
       link: "https://fineartamerica.com/featured/let-it-bee-kathryn-hansen.html",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "Original no longer for sale. Prints are available.",
       price: null,
       availability: "Available",
@@ -95,7 +95,7 @@ db.once("open", async () => {
         "Colored Pencil on Paper. At our third camp in Kenya we landed at the Elephant Bedroom camp in Samburu. We were greeted by their resident elephant standing in the wide river munching away on the tall grasses. We were able to snap a few photos before the armed guards shooed us away for fear of us getting too close to a wild animal! ",
       //image:
       link: "https://fineartamerica.com/featured/im-all-ears-kathryn-hansen.html",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "Original no longer for sale. Prints are available.",
       price: null,
       availability: "Available",
@@ -107,7 +107,7 @@ db.once("open", async () => {
 
       //image:
       link: "https://fineartamerica.com/featured/hiding-in-plain-sight-kathryn-hansen.html",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "Original no longer for sale. Prints are available.",
       price: null,
       availability: "Available",
@@ -118,7 +118,7 @@ db.once("open", async () => {
         "Colored Pencil on Paper. This beautiful kaleidoscope of Monarch butterflies are hanging up high on a eucalyptus branch. I saw them while on vacation in Pismo Beach, CA a few years ago.  ",
       //image:
       link: "https://fineartamerica.com/featured/winging-it-kathryn-hansen.html",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "Original no longer for sale. Prints are available.",
       price: null,
       availability: "Available",
@@ -128,7 +128,7 @@ db.once("open", async () => {
       description: "Colored Pencil on Paper",
       //image:
       link: "https://annkullberg.com/products/elephant-in-depth-colored-pencil-tutorial",
-      tag: tags[2].name,
+      tag: tags[2],
       size: "11.75x17.5",
       price: 13.99,
       availability: "Available",
@@ -137,14 +137,14 @@ db.once("open", async () => {
 
   console.log("gallery seeded");
 
-  await User.deleteMany();
+  await Admin.deleteMany();
 
-  await User.create({
+  await Admin.create({
     email: "katkdd@yahoo.com",
     password: "password",
   });
 
-  console.log("users seeded");
+  console.log("Admin seeded");
 
   process.exit();
 });

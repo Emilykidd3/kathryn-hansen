@@ -1,10 +1,21 @@
 import React from 'react';
+import { Container, Row, Col } from "reactstrap";
 
 const Gallery = () => {
     return(
-        <div>
-            Gallery
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                
+                </Col>
+                <Col>
+                
+                </Col>
+                <Col>
+                
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
