@@ -7,7 +7,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
   :hover {
-    color: white;
+    color: #CE9584;
   }
   font-weight: lighter;
 `;
@@ -27,7 +27,7 @@ function Navigation() {
         </NavItem>
       </Nav>
 
-      <NavbarBrand style={{ marginLeft: "10px", marginRight: "10px", fontSize: "40px", fontWeight: "lighter" }}>
+      <NavbarBrand style={{ marginLeft: "10px", marginRight: "10px", fontSize: "40px", fontWeight: "200" }}>
         K A T H R Y N &nbsp;  H A N S E N
       </NavbarBrand>
 
