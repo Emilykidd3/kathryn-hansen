@@ -18,7 +18,7 @@ db.once("open", async () => {
     {
       title: "The Fast and the Fuuurriest",
       description: "Colored Pencil on Paper",
-      //   image: 'cookie-tin.jpg',
+      image: 'the-fast-and-the-fuuurriest.jpg',
       link: null,
       tag: tags[2],
       size: "12x20",
