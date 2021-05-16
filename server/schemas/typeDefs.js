@@ -39,6 +39,7 @@ const typeDefs = gql`
     size: String
     price: Float
     availability: String
+    tag: [Tags]
   }
 
   type Events {
@@ -86,7 +87,8 @@ const typeDefs = gql`
       link: String,
       size: String,
       price: Float,
-      availability: String): Gallery
+      availability: String,
+      tag: [ID]): Gallery
     updateGallery(
       _id: ID!,
       title: String,
