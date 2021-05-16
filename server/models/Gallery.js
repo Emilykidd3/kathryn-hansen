@@ -18,9 +18,6 @@ const gallerySchema = new Schema({
   link: {
     type: String,
   },
-  tag: {
-    type: Array,
-  },
   size: {
     type: String,
   },
@@ -30,6 +27,10 @@ const gallerySchema = new Schema({
   },
   availability: {
     type: String,
+  },
+  tag: {
+    type: Schema.Types.ObjectId,
+    ref: 'Tags'
   },
 });
 
