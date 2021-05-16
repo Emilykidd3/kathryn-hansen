@@ -48,7 +48,7 @@ const resolvers = {
           .populate("tag");
 
         //   user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-        admin.events.sort((a, b) => b.eventDate - a.eventDate);
+        admin.events.sort((a, b) => b.Date - a.Date);
         // admin.galleries.sort((a, b) => b.eventDate - a.eventDate);
 
         return admin;
@@ -65,8 +65,9 @@ const resolvers = {
       return { token, admin };
     },
 
-    addGallery: async (_, args, context) => {
+    addGallery: async (_, args, context ) => {
       if (context.admin) {
+        console.log(args)
         const gallery = await Gallery.create({
           ...args,
           email: context.admin.email,
