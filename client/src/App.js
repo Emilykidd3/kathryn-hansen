@@ -11,6 +11,8 @@ import Events from "./pages/Events";
 import NoMatch from "./pages/NoMatch";
 
 import Nav from "./components/Nav";
+import Footer from './components/Footer';
+import { EmptySpace } from "./components/EmptySpace";
 
 // import { StoreProvider } from './utils/GlobalState';
 
@@ -42,7 +44,10 @@ function App() {
 
             <Route component={NoMatch} />
           </Switch>
+
         </div>
+        <EmptySpace />
+        <Footer />
       </Router>
     </ApolloProvider>
   );
