@@ -17,42 +17,86 @@ function Footer() {
         <Row>
           <Col xs="4">
             <Row style={{ alignItems: "center" }}>
-              <FontAwesomeIcon icon={faFacebookSquare} size="4x" />
-              <FontAwesomeIcon
-                icon={faPinterestSquare}
-                size="4x"
-                style={{ marginLeft: "5px" }}
-              />
-              <FontAwesomeIcon
-                icon={faInstagramSquare}
-                size="4x"
-                style={{ marginLeft: "5px" }}
-              />
-              <FontAwesomeIcon
-                icon={faRssSquare}
-                size="4x"
-                style={{ marginLeft: "5px" }}
-              />
-              <FontAwesomeIcon
-                icon={faEnvelopeSquare}
-                size="4x"
-                style={{ marginLeft: "5px" }}
-              />
+              <ul style={{display: "flex", justifyContent: "center", listStyleType: "none"}}>
+                <li>
+                  <a
+                    href="https://www.facebook.com/kathrynhansen9"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FontAwesomeIcon icon={faFacebookSquare} size="2x" style={{color: "#393D3F"}}/>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="https://www.pinterest.com/kathryn_hansen8/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      icon={faPinterestSquare}
+                      size="2x"
+                      style={{ marginLeft: "5px", color: "#393D3F" }}
+                    />
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="https://www.instagram.com/kathrynhansendrawings/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      icon={faInstagramSquare}
+                      size="2x"
+                      style={{ marginLeft: "5px", color: "#393D3F" }}
+                    />
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="https://artblogbykat.blogspot.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      icon={faRssSquare}
+                      size="2x"
+                      style={{ marginLeft: "5px", color: "#393D3F" }}
+                    />
+                  </a>
+                </li>
+
+                <li>
+                  <a href="mailto:kh@kathrynhansen.com">
+                    <FontAwesomeIcon
+                      icon={faEnvelopeSquare}
+                      size="2x"
+                      style={{ marginLeft: "5px", color: "#393D3F" }}
+                    />
+                  </a>
+                </li>
+              </ul>
             </Row>
             <Row>
-              <p style={{ textAlign: "center" }}>kh@kathrynhansen.com</p>
+              <p style={{ textAlign: "center", fontWeight: "lighter" }}>kh@kathrynhansen.com</p>
             </Row>
           </Col>
           <Col xs="2"></Col>
           <Col>
             <Row style={{ fontWeight: "lighter" }}>
-              <p style={{textAlign: "center"}}>JOIN MY EMAIL LIST</p>
+              <p style={{ textAlign: "center" }}>JOIN MY EMAIL LIST</p>
             </Row>
             <Row>
               <InputGroup>
-                <Input placeholder="EMAIL"/>
+                <Input placeholder="EMAIL" />
                 <InputGroupAddon addonType="append">
-                  <InputGroupText  style={{fontWeight: "lighter"}}>SIGN UP</InputGroupText>
+                  <InputGroupText style={{ fontWeight: "lighter" }}>
+                    SIGN UP
+                  </InputGroupText>
                 </InputGroupAddon>
               </InputGroup>
             </Row>
