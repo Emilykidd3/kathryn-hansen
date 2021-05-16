@@ -9,9 +9,12 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Events from "./pages/Events";
 import NoMatch from "./pages/NoMatch";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import AddPhoto from "./pages/AddPhoto";
 
 import Nav from "./components/Nav";
-import Footer from './components/Footer';
+import Footer from "./components/Footer";
 import { EmptySpace } from "./components/EmptySpace";
 
 // import { StoreProvider } from './utils/GlobalState';
@@ -41,10 +44,11 @@ function App() {
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/events" component={Events} />
-
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/addphoto" component={AddPhoto} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Route component={NoMatch} />
           </Switch>
-
         </div>
         <EmptySpace />
         <Footer />
