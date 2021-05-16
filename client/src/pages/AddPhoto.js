@@ -8,10 +8,11 @@ function AddPhoto() {
   return (
     <div>
       <EmptySpace />
-      <UploadImage />
-      <Button id="upload_widget" class="cloudinary-button">
-        Upload files
-      </Button>
+      <div style={{ width: "60%" }}>
+        <Button id="upload_widget" class="cloudinary-button">
+          Upload files
+        </Button>
+      </div>
     </div>
   );
 }

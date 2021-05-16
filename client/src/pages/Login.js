@@ -2,6 +2,8 @@ import React from "react";
 import { EmptySpace } from "../components/EmptySpace";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
+// add validators so its a valid
+
 const Login = () => {
   return (
     <div>
@@ -15,7 +17,7 @@ const Login = () => {
       >
         ADMIN LOGIN
       </h2>
-      <Form style={{ width: "80%", margin: "0 auto" }}>
+      <Form style={{ width: "40%", margin: "0 auto" }}>
         <FormGroup style={{ marginBottom: "8px" }}>
           <Label for="exampleEmail">Email</Label>
           <Input type="email" name="email" id="exampleEmail" placeholder="" />
