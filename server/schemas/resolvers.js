@@ -1,6 +1,10 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { Admin, Events, Gallery, Tags } = require("../models");
 const { signToken } = require("../utils/auth");
+require('dotenv').config();
+const cloudinary = require("cloudinary").v2;
+const path = require("path");
+const { createWriteStream, unlink } = require('fs');
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
@@ -67,16 +71,48 @@ const resolvers = {
 
     addGallery: async (_, args, context ) => {
       if (context.admin) {
-        console.log(args)
-        const gallery = await Gallery.create({
-          ...args,
-          email: context.admin.email,
+        let { image, input} = args
+        const { createReadStream, filename } = await image;
+        // reads what is coming in from front end
+        await new Promise((res) => {
+          createReadStream()
+            .pipe(
+              // creates folder with image in it
+              createWriteStream(path.join(__dirname, '../../images', filename))
+            )
+            .on('close', res);
         });
-        // await Admin.create(args);
-        return gallery;
-      }
+        // upload image to cloudinary using cloudinary uploader
+        const upload = await cloudinary.uploader.upload(
+          `../images/${filename}`,
+          (error, result) => {
+            if (error) console.error(error);
+            return result;
+          }
+        );
 
-      throw new AuthenticationError("You need to be an admin!");
+        input.link = upload.url
+        input.imageId = upload.public_id
+
+        const gallery = await Gallery.create({
+          ...input         
+        }
+        // {new: true}
+        );
+      
+      const removeFile = await unlink(
+        path.join(__dirname, '../../images', filename),
+        (err) => {
+          if (err) console.error(err);
+          return;
+        }
+      );
+
+      // await Admin.create(args);
+      return gallery;
+    }
+
+    throw new AuthenticationError("You need to be an admin!");
     },
 
     addEvents: async (_, args, context) => {
@@ -103,6 +139,15 @@ const resolvers = {
       }
 
       throw new AuthenticationError("You need to be an admin!");
+    },
+
+    addGalleryTag: async (_, args, context) => {
+      console.log(args)
+      // if (context.admin) {
+
+      //   const updatedGallery = await Gallery.updateOne({
+      //     { _id: gallery._id }
+      //   })
     },
 
     updateGallery: async (_, args, context) => {

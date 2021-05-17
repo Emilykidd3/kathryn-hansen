@@ -34,8 +34,8 @@ const typeDefs = gql`
     _id: ID
     title: String
     description: String
-    image: String
     link: String
+    imageId: String
     size: String
     price: Float
     availability: String
@@ -77,18 +77,21 @@ const typeDefs = gql`
     admin: Admin
   }
 
+  input Database {
+    title: String 
+    description: String
+    size: String
+    price: Float
+    availability: String
+    tag: [ID]
+  }
+
   type Mutation {
     addAdmin(email: String!, password: String!): Auth
     updateAdmin(email: String, password: String): Admin
     addGallery(
-      title: String, 
-      description: String,
-      image: String,
-      link: String,
-      size: String,
-      price: Float,
-      availability: String,
-      tag: [ID]): Gallery
+      input: Database
+      image: Upload): Gallery
     updateGallery(
       _id: ID!,
       title: String,
@@ -121,6 +124,7 @@ const typeDefs = gql`
       endTime: String,
       link: String): Events
     deleteEvents(_id: ID!): Events
+    addGalleryTag(_id: ID, title: String): Gallery
     addTags(name: String): Tags
     updateTags(_id: ID!, name: String): Tags
     deleteTags(_id: ID!): Tags

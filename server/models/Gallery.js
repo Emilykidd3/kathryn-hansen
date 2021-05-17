@@ -12,10 +12,10 @@ const gallerySchema = new Schema({
     type: String,
     trim: true,
   },
-  image: {
+  link: {
     type: String,
   },
-  link: {
+  imageId: {
     type: String,
   },
   size: {
