@@ -3,7 +3,7 @@ const {
   createAdmin,
   getSingleAdmin,
   login,
-} = require("../../controllers/user-controller");
+} = require("../../controllers/admin-controller");
 
 const { authMiddleware } = require("../../utils/auth");
 

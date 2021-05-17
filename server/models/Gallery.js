@@ -28,10 +28,6 @@ const gallerySchema = new Schema({
   availability: {
     type: String,
   },
-  tag: {
-    type: Schema.Types.ObjectId,
-    ref: 'Tags'
-  },
 });
 
 const Gallery = mongoose.model("Gallery", gallerySchema);
