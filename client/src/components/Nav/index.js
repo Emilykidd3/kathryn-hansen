@@ -32,14 +32,13 @@ function Navigation() {
             tag="a"
             className="nav-link, hover"
             style={{
-              color: "black",
+              color: "white",
               fontWeight: "lighter",
               padding: "0",
               textDecoration: "none",
             }}
             caret
           >
-            ADMIN
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem
