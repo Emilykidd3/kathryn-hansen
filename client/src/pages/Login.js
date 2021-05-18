@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { EmptySpace } from "../components/EmptySpace";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-// add validators so its a valid
+import { useMutation } from '@apollo/react-hooks';
+import { LOGIN } from "../utils/mutations"
+import Auth from "../utils/auth";
 
-const Login = () => {
+const Login = (props) => {
+  const [formState, setFormState] = useState({ email: '', password: '' })
+  const [login, { error }] = useMutation(LOGIN);
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+    try {
+      const mutationResponse = await login({ variables: { email: formState.email, password: formState.password } })
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e)
+    }
+  };
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value
+    });
+  };
+
   return (
     <div>
       <EmptySpace />
@@ -17,10 +41,11 @@ const Login = () => {
       >
         ADMIN LOGIN
       </h2>
-      <Form style={{ width: "40%", margin: "0 auto" }}>
+      <Form style={{ width: "80%", margin: "0 auto" }} onSubmit={handleFormSubmit}>
         <FormGroup style={{ marginBottom: "8px" }}>
           <Label for="exampleEmail">Email</Label>
-          <Input type="email" name="email" id="exampleEmail" placeholder="" />
+          <Input type="email" name="email" id="exampleEmail" placeholder=""
+          onChange={handleChange} />
         </FormGroup>
         <FormGroup style={{ marginBottom: "8px" }}>
           <Label for="examplePassword">Password</Label>
@@ -29,6 +54,7 @@ const Login = () => {
             name="password"
             id="examplePassword"
             placeholder=""
+            onChange={handleChange}
           />
         </FormGroup>
         <Button

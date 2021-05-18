@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import Events from "./pages/Events";
 import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import AddPhoto from "./pages/AddPhoto";
 
@@ -37,6 +38,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
+          
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -45,6 +47,7 @@ function App() {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/events" component={Events} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/addphoto" component={AddPhoto} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route component={NoMatch} />

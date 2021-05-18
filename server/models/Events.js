@@ -32,15 +32,15 @@ const eventsSchema = new Schema({
         },
     
     date: {
-        type: Date,
+        type: String,
         required: true
         },
     startTime: {
-        type: Number,
+        type: String,
         default: (new Date()).getTime() 
         },
     endTime: {
-        type: Number,
+        type: String,
         default: (new Date()).getTime(), 
         // default: startTime + 2 
         },
