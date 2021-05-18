@@ -12,6 +12,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import styled from "styled-components";
+import Auth from "../../utils/auth";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -23,43 +24,47 @@ const StyledLink = styled(Link)`
 `;
 
 function Navigation() {
-  // if (logginIn) {
-  //   return (
-  //     <UncontrolledDropdown setActiveFromChild>
-  //       <DropdownToggle
-  //         tag="a"
-  //         className="nav-link, hover"
-  //         style={{
-  //           color: "black",
-  //           fontWeight: "lighter",
-  //           padding: "0",
-  //           textDecoration: "none",
-  //         }}
-  //         caret
-  //       >
-  //         ADMIN
-  //       </DropdownToggle>
-  //       <DropdownMenu>
-  //         <DropdownItem
-  //           tag="a"
-  //           href="/blah"
-  //           style={{ backgroundColor: "white", color: "black" }}
-  //           active
-  //         >
-  //           Dashboard
-  //         </DropdownItem>
-  //         <DropdownItem
-  //           tag="a"
-  //           href="/blah"
-  //           style={{ backgroundColor: "white", color: "black" }}
-  //           active
-  //         >
-  //           Logout
-  //         </DropdownItem>
-  //       </DropdownMenu>
-  //     </UncontrolledDropdown>
-  //   );
-  // }
+  function showLoggedIn() {
+    if (Auth.loggedIn()) {
+      return (
+        <UncontrolledDropdown setActiveFromChild>
+          <DropdownToggle
+            tag="a"
+            className="nav-link, hover"
+            style={{
+              color: "black",
+              fontWeight: "lighter",
+              padding: "0",
+              textDecoration: "none",
+            }}
+            caret
+          >
+            ADMIN
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem
+              tag="a"
+              href="/dashboard"
+              style={{ backgroundColor: "white", color: "black" }}
+              active
+            >
+              Dashboard
+            </DropdownItem>
+            <DropdownItem
+              tag="a"
+              href="/blah"
+              style={{ backgroundColor: "white", color: "black" }}
+              active
+            >
+              <a href="/" onClick={() => Auth.logout()} style={{ backgroundColor: "white", color: "black", textDecoration: "none" }}>
+                Logout
+              </a>
+            </DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+      );
+    }
+  }
 
   return (
     <Navbar
@@ -107,6 +112,7 @@ function Navigation() {
             SHOP
           </NavLink>
         </NavItem>
+        {showLoggedIn()}
       </Nav>
     </Navbar>
   );
