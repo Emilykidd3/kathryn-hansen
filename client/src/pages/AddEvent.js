@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_EVENT } from "../utils/mutations"
 import Auth from "../utils/auth";
 
-const Events = () => {
+const AddEvents = () => {
     const [formState, setFormState] = useState({ title: '', date: '', startTime: '', endTime: '', address: '', city: '', state: '', zip: '', link: '' })
     const [addEvent, { error }] = useMutation(ADD_EVENT);
 
@@ -40,10 +40,10 @@ const Events = () => {
                     marginBottom: "40px",
                 }}
             >
-                ADMIN LOGIN
+                ADD EVENT
             </h2>
 
-            <Form style={{ width: "80%", margin: "0 auto" }} onSubmit={handleFormSubmit}>
+            <Form style={{ width: "40%", margin: "0 auto" }} onSubmit={handleFormSubmit}>
                 <FormGroup style={{ marginBottom: "8px" }}>
                     <Label for="exampleTitle">Title</Label>
                     <Input type="title" name="title" id="exampleTitle" placeholder=""
@@ -60,7 +60,7 @@ const Events = () => {
                     />
                 </FormGroup>
                 <FormGroup style={{ marginBottom: "8px" }}>
-                    <Label for="exampleStartTime">Date</Label>
+                    <Label for="exampleEndTime">Start Time</Label>
                     <Input
                         type="startTime"
                         name="startTime"
@@ -144,4 +144,4 @@ const Events = () => {
     );
 }
 
-export default Events;
+export default AddEvents;

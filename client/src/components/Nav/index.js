@@ -1,20 +1,73 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, NavbarBrand, Nav, NavLink, NavItem } from "reactstrap";
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavLink,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 import styled from "styled-components";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
   :hover {
-    color: #CE9584;
+    color: #ce9584;
   }
   font-weight: lighter;
 `;
 
 function Navigation() {
+  // if (logginIn) {
+  //   return (
+  //     <UncontrolledDropdown setActiveFromChild>
+  //       <DropdownToggle
+  //         tag="a"
+  //         className="nav-link, hover"
+  //         style={{
+  //           color: "black",
+  //           fontWeight: "lighter",
+  //           padding: "0",
+  //           textDecoration: "none",
+  //         }}
+  //         caret
+  //       >
+  //         ADMIN
+  //       </DropdownToggle>
+  //       <DropdownMenu>
+  //         <DropdownItem
+  //           tag="a"
+  //           href="/blah"
+  //           style={{ backgroundColor: "white", color: "black" }}
+  //           active
+  //         >
+  //           Dashboard
+  //         </DropdownItem>
+  //         <DropdownItem
+  //           tag="a"
+  //           href="/blah"
+  //           style={{ backgroundColor: "white", color: "black" }}
+  //           active
+  //         >
+  //           Logout
+  //         </DropdownItem>
+  //       </DropdownMenu>
+  //     </UncontrolledDropdown>
+  //   );
+  // }
+
   return (
-    <Navbar light expand="md" style={{ background: "transparent", position: "absolute"}} fixed="top">
+    <Navbar
+      light
+      expand="md"
+      style={{ background: "transparent", position: "absolute" }}
+      fixed="top"
+    >
       <Nav className="container-fluid" navbar style={{ width: "18%" }}>
         <NavItem className="ml-auto">
           <StyledLink to="/">HOME</StyledLink>
@@ -27,7 +80,14 @@ function Navigation() {
         </NavItem>
       </Nav>
 
-      <NavbarBrand style={{ marginLeft: "10px", marginRight: "10px", fontSize: "40px", fontWeight: "200" }}>
+      <NavbarBrand
+        style={{
+          marginLeft: "10px",
+          marginRight: "10px",
+          fontSize: "40px",
+          fontWeight: "200",
+        }}
+      >
         K A T H R Y N &nbsp; H A N S E N
       </NavbarBrand>
 
@@ -40,7 +100,7 @@ function Navigation() {
         </NavItem>
         <NavItem className="mr-auto">
           <NavLink
-            className= "hover"
+            className="hover"
             href="https://fineartamerica.com/profiles/kathryn-hansen"
             style={{ color: "black", fontWeight: "lighter", padding: "0" }}
           >
@@ -55,4 +115,4 @@ export default Navigation;
 
 // each component should have 100vh style={{height: "100vh"}}
 
-// 
+//

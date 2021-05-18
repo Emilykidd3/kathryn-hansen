@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import AddPhoto from "./pages/AddPhoto";
+import AddEvent from "./pages/AddEvent";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -49,6 +50,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/addphoto" component={AddPhoto} />
+            <Route exact path="/addevent" component={AddEvent} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route component={NoMatch} />
           </Switch>
