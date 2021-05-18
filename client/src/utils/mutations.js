@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-export const LOGIN_USER = gql`
+export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
@@ -14,7 +14,7 @@ export const LOGIN_USER = gql`
 export const ADD_ADMIN = gql`
   mutation addAdmin($email: String!, $password: String!) {
     addAdmin(email: $email, password: $password) {
-      token
+     token
       admin {
         _id
       }
@@ -23,8 +23,8 @@ export const ADD_ADMIN = gql`
 `;
 
 export const ADD_GALLERY = gql`
-  mutation addGallery($title: String, $description: String, $image: String) {
-    addGallery(title: $title, description: $description, image: $image) {
+  mutation addGallery($title: String, $description: String) {
+    addGallery(title: $title, description: $description) {
       title
       description
       image
@@ -32,6 +32,7 @@ export const ADD_GALLERY = gql`
       size
       price
       availability
+      tag
     }
   }
 `;
@@ -41,14 +42,23 @@ export const ADD_EVENT = gql`
     $date: String
     $startTime: String
     $endTime: String
+    $address: String
+    $city: String
+    $state: String
+    $zip: String
+    $link: String
   ) {
     addEvents(
       title: $title
       date: $date
       startTime: $startTime
       endTime: $endTime
+      city: $city
+      address: $address
+      state: $state
+      zip: $zip
+      link: $link
     ) {
-      _id
       title
       address
       city

@@ -39,7 +39,7 @@ const typeDefs = gql`
     size: String
     price: Float
     availability: String
-    tag: [Tags]
+    tag: String
   }
 
   type Events {
@@ -83,7 +83,7 @@ const typeDefs = gql`
     size: String
     price: Float
     availability: String
-    tag: [ID]
+    tag: String
   }
 
   type Mutation {
@@ -93,35 +93,36 @@ const typeDefs = gql`
       input: Database
       image: Upload): Gallery
     updateGallery(
-      _id: ID!,
-      title: String,
-      description: String,
-      image: String,
-      link: String,
-      size: String,
-      price: Float,
-      availability: String): Gallery
+      _id: ID!
+      title: String
+      description: String
+      image: String
+      link: String
+      size: String
+      price: Float
+      availability: String
+      tag: String): Gallery
     deleteGallery(_id: ID!): Gallery
     addEvents(
-      title: String,
-      address: String,
-      city: String,
-      state: String,
-      zip: String,
-      date: String,
-      startTime: String,
-      endTime: String,
+      title: String
+      address: String
+      city: String
+      state: String
+      zip: String
+      date: String
+      startTime: String
+      endTime: String
       link: String): Events
     updateEvents(
-      _id: ID!,
-      title: String,
-      address: String,
-      city: String,
-      state: String,
-      zip: String,
-      date: String,
-      startTime: String,
-      endTime: String,
+      _id: ID!
+      title: String
+      address: String
+      city: String
+      state: String
+      zip: String
+      date: String
+      startTime: String
+      endTime: String
       link: String): Events
     deleteEvents(_id: ID!): Events
     addGalleryTag(_id: ID, title: String): Gallery
