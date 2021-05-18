@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
 
 function Navigation() {
   return (
-    <Navbar light expand="md" style={{ background: "transparent", position: "absolute"}} fixed="bottom">
+    <Navbar light expand="md" style={{ background: "transparent", position: "absolute"}} fixed="top">
       <Nav className="container-fluid" navbar style={{ width: "18%" }}>
         <NavItem className="ml-auto">
           <StyledLink to="/">HOME</StyledLink>
