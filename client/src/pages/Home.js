@@ -1,5 +1,7 @@
 import React from "react";
 import { ViewHolder } from "../components/ViewHolder";
+import About from './About'
+import Contact from './Contact'
 
 // use media queries for height (mobile etc)
 
@@ -7,6 +9,7 @@ import { ViewHolder } from "../components/ViewHolder";
 
 const Home = () => {
   return (
+    <div>
     <ViewHolder
       style={{
         backgroundImage: `url(${process.env.PUBLIC_URL}/images/im-all-ears.jpg)`,
@@ -32,6 +35,11 @@ const Home = () => {
         </h4>
       </div>
     </ViewHolder>
+    {/* add gallery here */}
+    <About />
+    {/* add events here */}
+    <Contact />
+    </div>
   );
 };
 
