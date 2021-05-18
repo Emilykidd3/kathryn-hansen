@@ -23,7 +23,12 @@
   },
   "homepage": "https://github.com/Emilykidd3/kathryn-hansen#readme",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "axios": "^0.21.1",
+    "cloudinary": "^1.25.1",
+    "cloudinary-react": "^1.7.0",
+    "if-env": "^1.0.4",
+    "path": "^0.12.7",
+    "react-cloudinary-upload-widget": "^1.4.3"
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
