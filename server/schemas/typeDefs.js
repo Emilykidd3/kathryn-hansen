@@ -96,7 +96,6 @@ const typeDefs = gql`
       _id: ID!
       title: String
       description: String
-      image: String
       link: String
       size: String
       price: Float
@@ -125,7 +124,6 @@ const typeDefs = gql`
       endTime: String
       link: String): Events
     deleteEvents(_id: ID!): Events
-    addGalleryTag(_id: ID, title: String): Gallery
     addTags(name: String): Tags
     updateTags(_id: ID!, name: String): Tags
     deleteTags(_id: ID!): Tags
