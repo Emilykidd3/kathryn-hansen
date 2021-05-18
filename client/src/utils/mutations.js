@@ -36,6 +36,7 @@ export const ADD_GALLERY = gql`
     }
   }
 `;
+
 export const ADD_EVENT = gql`
   mutation addEvents(
     $title: String
