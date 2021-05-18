@@ -2,13 +2,13 @@ const db = require("./connection");
 const { Gallery, Tags, Admin } = require("../models");
 
 db.once("open", async () => {
-  await Tags.deleteMany();
+  // await Tags.deleteMany();
 
-  const tags = await Tags.insertMany([
-    { name: "Pets" },
-    { name: "Wild Animals" },
-    { name: "Landscapes" },
-  ]);
+  // const tags = await Tags.insertMany([
+  //   { name: "Pets" },
+  //   { name: "Wild Animals" },
+  //   { name: "Landscapes" },
+  // ]);
 
   console.log("tags seeded");
 
