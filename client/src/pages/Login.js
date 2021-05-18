@@ -41,7 +41,6 @@ const Login = (props) => {
       >
         ADMIN LOGIN
       </h2>
-      
       <Form style={{ width: "80%", margin: "0 auto" }} onSubmit={handleFormSubmit}>
         <FormGroup style={{ marginBottom: "8px" }}>
           <Label for="exampleEmail">Email</Label>
