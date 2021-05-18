@@ -40,8 +40,9 @@ function Navigation() {
         </NavItem>
         <NavItem className="mr-auto">
           <NavLink
+            className= "hover"
             href="https://fineartamerica.com/profiles/kathryn-hansen"
-            style={{ color: "black", fontWeight: "lighter" }}
+            style={{ color: "black", fontWeight: "lighter", padding: "0" }}
           >
             SHOP
           </NavLink>

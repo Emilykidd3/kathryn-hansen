@@ -17,6 +17,7 @@ import AddPhoto from "./pages/AddPhoto";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import { EmptySpace } from "./components/EmptySpace";
+import "./App.css"
 
 // import { StoreProvider } from './utils/GlobalState';
 
