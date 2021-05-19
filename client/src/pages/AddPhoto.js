@@ -30,72 +30,114 @@ const AddPhoto = () => {
             [name]: value
         });
     };
-  return (
-    <div>
-      <EmptySpace />
-      <Container>
-        <Row>
-          <h2
-            style={{
-              textAlign: "center",
-              fontWeight: "200",
-              marginBottom: "40px",
-            }}
-          >
-            UPLOAD
-          </h2>
-          <Col>
-            <Form style={{ width: "80%", margin: "0 auto" } } onSubmit={handleFormSubmit}>
-              <FormGroup style={{ marginBottom: "8px" }}>
-                <Label for="imageTitle">Artwork Title *</Label>
-                <Input type="name" name="name" id="imageTitle" 
-                onChange={handleChange} />
-                
-              </FormGroup>
-              <FormGroup style={{ marginBottom: "8px" }}>
-                <Label for="imageDescription">Artwork Description</Label>
-                <Input
-                  type="textarea"
-                  name="imageDescription"
-                  id="imageDescription"
-                  onChange={handleChange}
-                />
-              </FormGroup>
-              <FormGroup style={{ marginBottom: "8px" }}>
-                <Label for="imageSize">Artwork Dimensions</Label>
-                <Input
-                  type="text"
-                  name="imageSize"
-                  id="imageSize"
-                  placeholder="Ex: 12x20"
-                  onChange={handleChange}
-                />
-              </FormGroup>
-              <FormGroup style={{ marginBottom: "8px" }}>
-                <Label for="imagePrice">Artwork Price</Label>
-                <Input type="text" name="imagePrice" id="imagePrice" 
-                onChange={handleChange}/>
-              </FormGroup>
-              <FormGroup style={{ marginBottom: "8px" }}>
-                <Label for="imageUpload"></Label>
-                <Input type="file" name="imageUpload" id="imageUpload" 
-                onChange={handleChange}/>
-              </FormGroup>
+    
+  function showAddPhoto() {
+    if (Auth.loggedIn()) {
+      return(
+        <div>
+        <EmptySpace />
+        <Container>
+          <Row>
+            <h2
+              style={{
+                textAlign: "center",
+                fontWeight: "200",
+                marginBottom: "40px",
+              }}
+            >
+              UPLOAD
+            </h2>
+            <Col>
+              <Form style={{ width: "60%", margin: "0 auto" }} onSubmit={handleFormSubmit}>
+                <FormGroup style={{ marginBottom: "8px" }}>
+                  <Label for="imageTitle">Artwork Title *</Label>
+                  <Input type="name" name="name" id="imageTitle"
+                  onChange={handleChange} />
+                </FormGroup>
+                <FormGroup style={{ marginBottom: "8px" }}>
+                  <Label for="imageDescription">Artwork Description</Label>
+                  <Input
+                    type="textarea"
+                    name="imageDescription"
+                    id="imageDescription"
+                    onChange={handleChange}
+                  />
+                </FormGroup>
+                <FormGroup style={{ marginBottom: "8px" }}>
+                  <Label for="imageSize">Artwork Dimensions</Label>
+                  <Input
+                    type="text"
+                    name="imageSize"
+                    id="imageSize"
+                    placeholder="Ex: 12x20"
+                    onChange={handleChange}
+                  />
+                </FormGroup>
+                <FormGroup style={{ marginBottom: "8px" }}>
+                  <Label for="imagePrice">Artwork Price</Label>
+                  <Input type="text" name="imagePrice" id="imagePrice" 
+                  onChange={handleChange}/>
+                </FormGroup>
+                <FormGroup style={{ marginBottom: "8px" }}>
+                  <Label for="imageUpload"></Label>
+                  <Input type="file" name="imageUpload" id="imageUpload" 
+                  onChange={handleChange}/>
+                </FormGroup>
+                <Button
+                  style={{
+                    marginBottom: "8px",
+                    color: "white",
+                    backgroundColor: "#A66D60",
+                    border: "solid 1px #A66D60",
+                  }}
+                >
+                  Submit
+                </Button>
+                <p>* Required</p>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      )
+    } else {
+      return (
+        <div>
+          <EmptySpace />
+          <div style={{ display: "flex" }}>
+            <div style={{ margin: "0 auto" }}>
               <Button
                 style={{
                   marginBottom: "8px",
                   color: "white",
                   backgroundColor: "#A66D60",
                   border: "solid 1px #A66D60",
+                  margin: "0 auto",
                 }}
               >
-                Submit
+                <a
+                  href="/login"
+                  style={{
+                    marginBottom: "8px",
+                    color: "white",
+                    backgroundColor: "#A66D60",
+                    border: "solid 1px #A66D60",
+                    textDecoration: "none",
+                  }}
+                >
+                  Login
+                </a>
               </Button>
-              <p>* Required</p>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  return (
+    <div>
+      {showAddPhoto()}
     </div>
   );
 };

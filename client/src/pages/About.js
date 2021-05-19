@@ -27,8 +27,8 @@ const About = () => {
               style={{ width: "80%" }}
             ></img>
           </Col>
-          <Col>
-            <div style={{ textAlign: "center" }}>
+          <Col style={{display: "flex"}}>
+            <div style={{ textAlign: "center", alignContent: "baseline" }}>
               <MarginP>
                 Standing precariously on the drab brown step stool, Ms
                 Willenson, my second grade teacher, adjusted my drawing of a
@@ -69,7 +69,7 @@ const About = () => {
         </Row>
         <Row>
           <Col style={{textAlign: "center"}}>
-            <Divider />
+            <Divider style={{marginTop: "60px"}}/>
             <h3>PODCASTS</h3>
             <ul style={{listStyleType: "none"}}>
               <li>
