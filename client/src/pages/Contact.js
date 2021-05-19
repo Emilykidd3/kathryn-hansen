@@ -55,7 +55,6 @@ const Contact = () => {
               <p>* Required</p>
             </Form>
           </Col>
-
           <Col>
           <img
               src={`${process.env.PUBLIC_URL}/images/a-kodiak-moment.jpg`}
