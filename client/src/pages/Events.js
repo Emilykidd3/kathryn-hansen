@@ -1,26 +1,30 @@
-// import React from 'react';
-// import { useQuery } from '@apollo/react-hooks';
-// import { QUERY_ADMIN, QUERY_ALL_EVENTS } from '../utils/queries';
+import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_ALL_EVENTS } from '../utils/queries';
+import { EmptySpace } from '../components/EmptySpace';
 
 
-// const Events = () => {
-//   const { data, loading } = useQuery(QUERY_ALL_EVENTS);
+const Events = () => {
+  const { data, loading } = useQuery(QUERY_ALL_EVENTS);
 
-//   if (loading) return <div>Loading...</div>;
+  const userData= data?.events || {};
 
-// //   if (error) console.error(error);
+  if (loading) return <div>Loading...</div>;
 
-//   console.log(data);
+//   if (error) console.error(error);
 
-//   return (
-//     <div>
-//         {data.admin.titleList > 0
-//             ? data.admin.titles.map((el) => (
-//                 <p>{el.title}</p>
-//             ))
-//             : ''}
-//     </div>
-//   );
-// };
+  console.log(data.events);
 
-// export default Events;
+  return (
+    <div>
+        <EmptySpace />
+        {data.events.length > 0
+            ? data.events.map((el) => (
+                <p key={el._id}>{el.title}</p>
+            ))
+            : ''}
+    </div>
+  );
+};
+
+export default Events;

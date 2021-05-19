@@ -6,6 +6,8 @@ import Auth from '../utils/auth';
 
 const AddPhoto = () => {
 
+  
+
   function showAddPhoto() {
     if (Auth.loggedIn()) {
       return(
