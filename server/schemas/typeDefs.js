@@ -77,6 +77,24 @@ const typeDefs = gql`
     admin: Admin
   }
 
+  type Test {
+    title: String 
+    description: String
+    size: String
+    price: String
+    availability: String
+    tag: String
+  }
+
+  input TestInput {
+    title: String 
+    description: String
+    size: String
+    price: String
+    availability: String
+    tag: String
+  }
+
   input Database {
     title: String 
     description: String
@@ -89,7 +107,7 @@ const typeDefs = gql`
   type Mutation {
     addAdmin(email: String!, password: String!): Auth
     updateAdmin(email: String, password: String): Admin
-    addGallery(
+    addImage(
       input: Database
       image: Upload): Gallery
     updateGallery(
@@ -124,6 +142,7 @@ const typeDefs = gql`
       startTime: String
       endTime: String
       link: String): Events
+    test(input: TestInput): Test
     deleteEvents(_id: ID!): Events
     addGalleryTag(_id: ID, title: String): Gallery
     addTags(name: String): Tags

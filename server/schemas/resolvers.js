@@ -69,7 +69,8 @@ const resolvers = {
       return { token, admin };
     },
 
-    addGallery: async (_, args, context ) => {
+    addImage: async (_, args, context ) => {
+      console.log("im here")
       if (context.admin) {
         let { image, input} = args
         const { createReadStream, filename } = await image;
@@ -126,6 +127,12 @@ const resolvers = {
       }
 
       throw new AuthenticationError("You need to be an admin!");
+    },
+
+    test: async (_, args, context) => {
+      // await Admin.create(args);
+      console.log("got to resolvers")
+      return args;
     },
 
     addTags: async (_, args, context) => {
