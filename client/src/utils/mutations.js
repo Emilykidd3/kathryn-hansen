@@ -39,7 +39,7 @@ export const ADD_GALLERY = gql`
 `;
 
 export const UPDATE_GALLERY = gql`
-  mutation updateGallery($_id: ID!, $title: String, $description: String, $link: String, $size: String, $price: Float, $availability: String, $tag: String) {
+  mutation updateGallery($_id: ID!, $title: String, $description: String, $link: String, $size: String, $price: String, $availability: String, $tag: String) {
     updateGallery(_id: $_id, title: $title, description: $description, link: $link, size: $size, price: $price, availability: $availability, tag: $tag) {
       id
       title

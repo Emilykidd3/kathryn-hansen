@@ -63,6 +63,7 @@ const resolvers = {
   },
   Mutation: {
     addAdmin: async (parent, args) => {
+      console.log(args)
       const admin = await Admin.create(args);
       const token = signToken(admin);
 
@@ -141,14 +142,14 @@ const resolvers = {
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    addGalleryTag: async (_, args, context) => {
-      console.log(args)
+    // addGalleryTag: async (_, args, context) => {
+    //   console.log(args)
       // if (context.admin) {
 
       //   const updatedGallery = await Gallery.updateOne({
       //     { _id: gallery._id }
       //   })
-    },
+    // },
 
     updateGallery: async (_, args, context) => {
       if (context.admin) {
@@ -233,6 +234,7 @@ const resolvers = {
     },
 
     login: async (parent, { email, password }) => {
+      console.log(email, password)
       const admin = await Admin.findOne({ email });
 
       if (!admin) {

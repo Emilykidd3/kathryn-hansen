@@ -37,7 +37,7 @@ const typeDefs = gql`
     link: String
     imageId: String
     size: String
-    price: Float
+    price: String
     availability: String
     tag: String
   }
@@ -81,7 +81,7 @@ const typeDefs = gql`
     title: String 
     description: String
     size: String
-    price: Float
+    price: String
     availability: String
     tag: String
   }
@@ -98,7 +98,7 @@ const typeDefs = gql`
       description: String
       link: String
       size: String
-      price: Float
+      price: String
       availability: String
       tag: String): Gallery
     deleteGallery(_id: ID!): Gallery
