@@ -4,6 +4,12 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Container, Row, Col } from "reactstrap";
 
 const Contact = () => {
+
+  // handleSubmit( event ) {
+  //   event.preventDefault();
+  //   console.log(this.state);
+  // }
+
   return (
     <div>
       <EmptySpace />
@@ -11,7 +17,7 @@ const Contact = () => {
         <Row>
           <h2 style={{ textAlign: "center", fontWeight: "200", marginBottom: "40px" }}>CONTACT</h2>
           <Col>
-            <Form style={{ width: "80%", margin: "0 auto" }}>
+            <Form style={{ width: "80%", margin: "0 auto" }} >
               <FormGroup style={{marginBottom: "8px"}}>
                 <Label for="exampleEmail">Name *</Label>
                 <Input
@@ -19,6 +25,8 @@ const Contact = () => {
                   name="name"
                   id="exampleName"
                   placeholder=""
+                  // value={this.state.name}
+                  // onChange={this.onNameChange.bind(this)}
                 />
               </FormGroup>
               <FormGroup style={{marginBottom: "8px"}}>
@@ -59,6 +67,21 @@ const Contact = () => {
       </Container>
     </div>
   );
+
+  // onNameChange(event) {
+  //   this.setState({name: event.target.value})
+  // }
+
+  // onEmailChange(event) {
+  //   this.setState({email: event.target.value})
+  // }
+
+  // onMessageChange(event) {
+  //   this.setState({message: event.target.value})
+  // }
+
+  // handleSubmit(event) {
+  // }
 };
 
 export default Contact;

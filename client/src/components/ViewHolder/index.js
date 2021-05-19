@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const ViewHolder = styled.div`
-    height: 100vh;
+    min-height: 1000px;
     width: 100vw;
     position: relative;
 `
+
+// height: 100vh;

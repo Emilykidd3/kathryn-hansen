@@ -6,7 +6,6 @@ export const QUERY_ADMIN = gql`
     admin {
       _id
       email
-    }
       gallery {
         _id
         title

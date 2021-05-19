@@ -1,20 +1,29 @@
 import React from "react";
 import { ViewHolder } from "../components/ViewHolder";
+import About from './About'
+import Contact from './Contact'
+
+// use media queries for height (mobile etc)
+
+// opactiy layer and darkening css or actual photo
 
 const Home = () => {
   return (
+    <div>
     <ViewHolder
       style={{
         backgroundImage: `url(${process.env.PUBLIC_URL}/images/im-all-ears.jpg)`,
         width: "100%",
-        // height: "100%",
+        minHeight: "1000px",
         backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center"
       }}
     >
       <div
         style={{
           position: "absolute",
-          top: "90%",
+          top: "70%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           textAlign: "center",
@@ -26,6 +35,11 @@ const Home = () => {
         </h4>
       </div>
     </ViewHolder>
+    {/* add gallery here */}
+    <About />
+    {/* add events here */}
+    <Contact />
+    </div>
   );
 };
 
