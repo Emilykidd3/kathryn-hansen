@@ -120,6 +120,9 @@ import { Container, Row, Col } from "reactstrap";
 import { ADD_GALLERY, TEST } from "../utils/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import Auth from "../utils/auth";
+
+
+
 const AddPhoto = () => {
   const [formState, setFormState] = useState({
     image: "",
@@ -130,6 +133,9 @@ const AddPhoto = () => {
     availability: "",
     tag: "",
   });
+
+  const [file, setFile] = useState();
+
   const [addGallery, { error }] = useMutation(TEST);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -144,6 +150,7 @@ const AddPhoto = () => {
             availability: formState.availability,
             tag: formState.tag,
           },
+          image: file
         },
       });
       // const token = mutationResponse.data.login.token;
@@ -160,6 +167,14 @@ const AddPhoto = () => {
       [name]: value,
     });
   };
+
+  const handleImage = (event) => {
+    console.log(event);
+    const _file = event.target.files[0];
+    console.log(_file);
+    setFile(_file);
+  }
+
   function showAddPhoto() {
     if (Auth.loggedIn()) {
       return (
@@ -234,7 +249,7 @@ const AddPhoto = () => {
                       type="file"
                       name="imageUpload"
                       id="imageUpload"
-                      onChange={handleChange}
+                      onChange={handleImage}
                     />
                   </FormGroup>
                   <Button

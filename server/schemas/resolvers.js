@@ -132,6 +132,7 @@ const resolvers = {
     test: async (_, args, context) => {
       // await Admin.create(args);
       console.log("got to resolvers")
+      console.log(args)
       return args;
     },
 

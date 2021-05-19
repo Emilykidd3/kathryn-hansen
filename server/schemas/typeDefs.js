@@ -1,6 +1,7 @@
 // need time scaler and update tags in Gallery
 
 const { gql } = require("apollo-server-express");
+const { GraphQLUpload } = require('graphql-upload');
 
 // const { GraphQLScalarType, Kind } = require("graphql");
 // const dateScalar = new GraphQLScalarType({
@@ -23,7 +24,10 @@ const { gql } = require("apollo-server-express");
 // scaler Time
 // scaler Date
 
+
+
 const typeDefs = gql`
+  scalar Upload
 
   type Tags {
     _id: ID
@@ -37,7 +41,7 @@ const typeDefs = gql`
     link: String
     imageId: String
     size: String
-    price: Float
+    price: String
     availability: String
     tag: String
   }
@@ -142,7 +146,10 @@ const typeDefs = gql`
       startTime: String
       endTime: String
       link: String): Events
-    test(input: TestInput): Test
+    test(
+      input: TestInput
+      image: ${GraphQLUpload}
+    ): Test
     deleteEvents(_id: ID!): Events
     addGalleryTag(_id: ID, title: String): Gallery
     addTags(name: String): Tags

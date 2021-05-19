@@ -36,9 +36,9 @@ const AddEvents = () => {
           link: formState.link,
         },
       });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
-      console.log(mutationResponse);
+    //   const token = mutationResponse.data.loggedIn.token;
+    //   Auth.login(token);
+    //   console.log(mutationResponse);
     } catch (e) {
       console.log(e);
     }

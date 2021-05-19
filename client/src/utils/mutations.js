@@ -105,15 +105,15 @@ export const ADD_ADMIN = gql`
 export const ADD_GALLERY = gql`
   mutation addImage($image: Upload, $input: Database) {
   addImage(image: $image, input: $input) {
-    image
-    input {
-      title
-      description
-      size
-      price
-      availability
-      tag
-      }
+    _id
+    title
+    description
+    link
+    imageId
+    size
+    price
+    availability
+    tag
     }
   }
 `;
@@ -177,9 +177,11 @@ export const ADD_EVENT = gql`
 export const TEST = gql`
 mutation test(
   $input: TestInput
+  $image: Upload
 ) {
   test(
     input: $input
+    image: $image
   ) {
     title
   }
