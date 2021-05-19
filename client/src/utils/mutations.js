@@ -51,7 +51,7 @@ export const UPDATE_GALLERY = gql`
       tag
       }
     }
-  }
+  
 `;
 
 export const DELETE_GALLERY = gql`
