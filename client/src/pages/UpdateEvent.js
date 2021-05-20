@@ -79,7 +79,7 @@ const UpdateEvent = () => {
                 type="title"
                 name="title"
                 id="exampleTitle"
-                placeholder=""
+                placeholder={}
                 onChange={handleChange}
               />
             </FormGroup>
