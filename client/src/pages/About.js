@@ -20,10 +20,17 @@ const About = () => {
     <div>
       <EmptySpace />
       <Container>
-      <h2 style={{ textAlign: "center", fontWeight: "200", marginBottom: "20px" }}>ABOUT</h2>
+        <h2
+          style={{
+            textAlign: "center",
+            fontWeight: "200",
+            marginBottom: "20px",
+          }}
+        >
+          ABOUT
+        </h2>
         <GrayDivider />
         <Row>
-
           <Col>
             <img
               src={`${process.env.PUBLIC_URL}/images/kathryn-hansen.jpg`}
@@ -31,8 +38,14 @@ const About = () => {
               style={{ width: "80%" }}
             ></img>
           </Col>
-          <Col style={{display: "flex"}}>
-            <div style={{ textAlign: "center", alignContent: "baseline" }}>
+          <Col style={{ display: "flex" }}>
+            <div
+              style={{
+                textAlign: "center",
+                alignContent: "baseline",
+                fontWeight: "lighter",
+              }}
+            >
               <MarginP>
                 Standing precariously on the drab brown step stool, Ms
                 Willenson, my second grade teacher, adjusted my drawing of a
@@ -72,10 +85,10 @@ const About = () => {
           </Col>
         </Row>
         <Row>
-          <Col style={{textAlign: "center"}}>
-            <Divider style={{marginTop: "60px"}}/>
+          <Col style={{ textAlign: "center" }}>
+            <Divider style={{ marginTop: "60px" }} />
             <h3>PODCASTS</h3>
-            <ul style={{listStyleType: "none"}}>
+            <ul style={{ listStyleType: "none" }}>
               <li>
                 <StyledA href="https://sharpenedartist.com/podcast/305">
                   Sharpened Artist podcast with John Middick, episode 305
