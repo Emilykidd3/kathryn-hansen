@@ -145,7 +145,7 @@ export const DELETE_EVENT = gql`
     deleteEvents(
       _id: $_id
     ) {
-      id
+      _id
       title
     }
   }

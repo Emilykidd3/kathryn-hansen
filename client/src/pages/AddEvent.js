@@ -14,8 +14,8 @@ const AddEvents = () => {
         event.preventDefault();
         try {
             const mutationResponse = await addEvent({ variables: { title: formState.title, date: formState.date, startTime: formState.startTime, endTime: formState.endTime, address: formState.address, city: formState.city, state: formState.state, zip: formState.zip, link: formState.link } })
-            const token = mutationResponse.data.login.token;
-            Auth.login(token);
+            // const token = mutationResponse.data.login.token;
+            // Auth.login(token);
             console.log(mutationResponse)
         } catch (e) {
             console.log(e)
