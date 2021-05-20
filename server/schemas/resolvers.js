@@ -1,13 +1,14 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { Admin, Events, Gallery, Tags } = require("../models");
 const { signToken } = require("../utils/auth");
-require('dotenv').config();
+require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
 const path = require("path");
-const { createWriteStream, unlink } = require('fs');
-// const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { createWriteStream, unlink } = require("fs");
+const { GraphQLUpload } = require("graphql-upload");
 
 const resolvers = {
+  Upload: GraphQLUpload,
   Query: {
     tag: async () => {
       return await Tags.find();
@@ -39,10 +40,10 @@ const resolvers = {
         };
       }
 
-      return await Events.find(params)
+      return await Events.find(params);
     },
     event: async (parent, { _id }) => {
-      return await Events.findById(_id)
+      return await Events.findById(_id);
     },
     admin: async (parent, args, context) => {
       if (context.admin) {
@@ -51,9 +52,7 @@ const resolvers = {
           .populate("events")
           .populate("tag");
 
-        //   user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
         admin.events.sort((a, b) => b.Date - a.Date);
-        // admin.galleries.sort((a, b) => b.eventDate - a.eventDate);
 
         return admin;
       }
@@ -70,18 +69,19 @@ const resolvers = {
       return { token, admin };
     },
 
-    addGallery: async (_, args, context ) => {
+    addGallery: async (_, args, context) => {
       if (context.admin) {
-        let { image, input} = args
+        let { image, input } = args;
+
         const { createReadStream, filename } = await image;
         // reads what is coming in from front end
         await new Promise((res) => {
           createReadStream()
             .pipe(
               // creates folder with image in it
-              createWriteStream(path.join(__dirname, '../../images', filename))
+              createWriteStream(path.join(__dirname, "../../images", filename))
             )
-            .on('close', res);
+            .on("close", res);
         });
         // upload image to cloudinary using cloudinary uploader
         const upload = await cloudinary.uploader.upload(
@@ -92,28 +92,31 @@ const resolvers = {
           }
         );
 
-        input.link = upload.url
-        input.imageId = upload.public_id
+        console.log(upload);
 
-        const gallery = await Gallery.create({
-          ...input         
-        }
-        // {new: true}
+        input.link = upload.url;
+        input.imageId = upload.public_id;
+
+        const gallery = await Gallery.create(
+          {
+            ...input,
+          }
+          // {new: true}
         );
-      
-      const removeFile = await unlink(
-        path.join(__dirname, '../../images', filename),
-        (err) => {
-          if (err) console.error(err);
-          return;
-        }
-      );
 
-      // await Admin.create(args);
-      return gallery;
-    }
+        const removeFile = await unlink(
+          path.join(__dirname, "../../images", filename),
+          (err) => {
+            if (err) console.error(err);
+            return;
+          }
+        );
 
-    throw new AuthenticationError("You need to be an admin!");
+        // await Admin.create(args);
+        return gallery;
+      }
+
+      throw new AuthenticationError("You need to be an admin!");
     },
 
     addEvents: async (_, args, context) => {
@@ -205,9 +208,9 @@ const resolvers = {
 
     deleteGallery: async (_, args, context) => {
       if (context.admin) {
-        const deletedGallery = await Gallery.findByIdAndDelete(
-          { _id: args._id },
-        );
+        const deletedGallery = await Gallery.findByIdAndDelete({
+          _id: args._id,
+        });
         return deletedGallery;
       }
       throw new AuthenticationError("You need to be an admin!");
@@ -215,9 +218,7 @@ const resolvers = {
 
     deleteEvents: async (_, args, context) => {
       if (context.admin) {
-        const deletedEvent = await Events.findByIdAndDelete(
-          { _id: args._id },
-        );
+        const deletedEvent = await Events.findByIdAndDelete({ _id: args._id });
         return deletedEvent;
       }
       throw new AuthenticationError("You need to be an admin!");
@@ -225,9 +226,7 @@ const resolvers = {
 
     deleteTags: async (_, args, context) => {
       if (context.admin) {
-        const deletedTag = await Tags.findByIdAndDelete(
-          { _id: args._id },
-        );
+        const deletedTag = await Tags.findByIdAndDelete({ _id: args._id });
         return deletedTag;
       }
       throw new AuthenticationError("You need to be an admin!");

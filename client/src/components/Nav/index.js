@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Navbar,
@@ -10,6 +10,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Collapse,
 } from "reactstrap";
 import styled from "styled-components";
 import Auth from "../../utils/auth";
@@ -23,7 +24,14 @@ const StyledLink = styled(Link)`
   font-weight: lighter;
 `;
 
+const phone = {
+  "max-width": "768px",
+};
+
 function Navigation() {
+  // const [collapsed, setCollapsed] = useState(true);
+
+  // const toggleNavbar = () => setCollapsed(!collapsed);
   function showLoggedIn() {
     if (Auth.loggedIn()) {
       return (
@@ -32,14 +40,13 @@ function Navigation() {
             tag="a"
             className="nav-link, hover"
             style={{
-              color: "white",
+              color: "yellow",
               fontWeight: "lighter",
               padding: "0",
               textDecoration: "none",
             }}
             caret
-          >
-          </DropdownToggle>
+          ></DropdownToggle>
           <DropdownMenu>
             <DropdownItem
               tag="a"
@@ -55,7 +62,15 @@ function Navigation() {
               style={{ backgroundColor: "white", color: "black" }}
               active
             >
-              <a href="/" onClick={() => Auth.logout()} style={{ backgroundColor: "white", color: "black", textDecoration: "none" }}>
+              <a
+                href="/"
+                onClick={() => Auth.logout()}
+                style={{
+                  backgroundColor: "white",
+                  color: "black",
+                  textDecoration: "none",
+                }}
+              >
                 Logout
               </a>
             </DropdownItem>

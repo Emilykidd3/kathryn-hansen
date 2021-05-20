@@ -2,29 +2,8 @@
 
 const { gql } = require("apollo-server-express");
 
-// const { GraphQLScalarType, Kind } = require("graphql");
-// const dateScalar = new GraphQLScalarType({
-//   name: "Date",
-//   description: "Date custom scalar type",
-//   serialize(value) {
-//     return value.getTime(); // Convert outgoing Date to integer for JSON
-//   },
-//   parseValue(value) {
-//     return new Date(value); // Convert incoming integer to Date
-//   },
-//   parseLiteral(ast) {
-//     if (ast.kind === Kind.INT) {
-//       return new Date(parseInt(ast.value, 10)); // Convert hard-coded AST string to integer and then to Date
-//     }
-//     return null; // Invalid hard-coded value (not an integer)
-//   },
-// });
-
-// scaler Time
-// scaler Date
-
 const typeDefs = gql`
-
+  scalar Upload
   type Tags {
     _id: ID
     name: String
@@ -78,7 +57,7 @@ const typeDefs = gql`
   }
 
   input Database {
-    title: String 
+    title: String
     description: String
     size: String
     price: String
@@ -89,9 +68,7 @@ const typeDefs = gql`
   type Mutation {
     addAdmin(email: String!, password: String!): Auth
     updateAdmin(email: String, password: String): Admin
-    addGallery(
-      input: Database
-      image: Upload): Gallery
+    addGallery(input: Database, image: Upload): Gallery
     updateGallery(
       _id: ID!
       title: String
@@ -100,7 +77,8 @@ const typeDefs = gql`
       size: String
       price: String
       availability: String
-      tag: String): Gallery
+      tag: String
+    ): Gallery
     deleteGallery(_id: ID!): Gallery
     addEvents(
       title: String
@@ -111,7 +89,8 @@ const typeDefs = gql`
       date: String
       startTime: String
       endTime: String
-      link: String): Events
+      link: String
+    ): Events
     updateEvents(
       _id: ID!
       title: String
@@ -122,7 +101,8 @@ const typeDefs = gql`
       date: String
       startTime: String
       endTime: String
-      link: String): Events
+      link: String
+    ): Events
     deleteEvents(_id: ID!): Events
     addTags(name: String): Tags
     updateTags(_id: ID!, name: String): Tags
