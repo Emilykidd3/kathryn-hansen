@@ -7,6 +7,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import dateFormat from "../utils/dateFormat";
 import { Divider } from "../components/Divider";
 import { Link } from "react-router-dom";
+import { GrayDivider } from '../components/GrayDivider';
 
 import Auth from "../utils/auth";
 
@@ -35,6 +36,8 @@ const Events = () => {
       return (
         <div>
           <EmptySpace />
+          <h2 style={{ textAlign: "center", fontWeight: "200", marginBottom: "20px" }}>UPCOMING EVENTS</h2>
+          <GrayDivider />
           {data.events.length > 0
             ? data.events.map((el) => (
                 <Container style={{ width: "60%" }} key={el._id}>
@@ -126,8 +129,11 @@ const Events = () => {
         </div>
       );
     } else {
+        return(
       <div>
         <EmptySpace />
+        <h2 style={{ textAlign: "center", fontWeight: "200", marginBottom: "20px" }}>UPCOMING EVENTS</h2>
+        <GrayDivider />
         {data.events.length > 0
           ? data.events.map((el) => (
               <Container style={{ width: "60%" }}>
@@ -190,7 +196,8 @@ const Events = () => {
               </Container>
             ))
           : ""}
-      </div>;
+      </div>
+        )
     }
   }
   return <div>{showEvent()}</div>;

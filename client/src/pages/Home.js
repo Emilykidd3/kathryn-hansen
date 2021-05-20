@@ -2,6 +2,8 @@ import React from "react";
 import { ViewHolder } from "../components/ViewHolder";
 import About from './About'
 import Contact from './Contact'
+import Gallery from './Gallery'
+import Events from './Events'
 
 // use media queries for height (mobile etc)
 
@@ -35,9 +37,9 @@ const Home = () => {
         </h4>
       </div>
     </ViewHolder>
-    {/* add gallery here */}
+    <Gallery />
     <About />
-    {/* add events here */}
+    <Events />
     <Contact />
     </div>
   );
