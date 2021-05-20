@@ -4,10 +4,10 @@ import { EmptySpace } from "../components/EmptySpace";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 import { useMutation } from "@apollo/react-hooks";
-import { ADD_EVENT } from "../utils/mutations";
+import { UPDATE_EVENT } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const AddEvents = () => {
+const UpdateEvent = () => {
   const [formState, setFormState] = useState({
     title: "",
     date: "",
@@ -19,14 +19,14 @@ const AddEvents = () => {
     zip: "",
     link: "",
   });
-  const [addEvent, { error }] = useMutation(ADD_EVENT);
-  let history = useHistory();
+  const [updateEvent, { error }] = useMutation(UPDATE_EVENT);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const mutationResponse = await addEvent({
+      const mutationResponse = await updateEvent({
         variables: {
+          _id: formState._id,
           title: formState.title,
           date: formState.date,
           startTime: formState.startTime,
@@ -41,9 +41,6 @@ const AddEvents = () => {
       //   const token = mutationResponse.data.login.token;
       //   Auth.login(token);
       console.log(mutationResponse);
-      if (mutationResponse) {
-        history.push("/events");
-      }
     } catch (e) {
       console.log(e);
     }
@@ -57,7 +54,7 @@ const AddEvents = () => {
     });
   };
 
-  function showAddEvent() {
+  function showUpdateEvent() {
     if (Auth.loggedIn()) {
       return (
         <div>
@@ -69,7 +66,7 @@ const AddEvents = () => {
               marginBottom: "40px",
             }}
           >
-            ADD EVENT
+            UPDATE EVENT
           </h2>
 
           <Form
@@ -82,7 +79,7 @@ const AddEvents = () => {
                 type="title"
                 name="title"
                 id="exampleTitle"
-                placeholder=""
+                placeholder={}
                 onChange={handleChange}
               />
             </FormGroup>
@@ -214,7 +211,7 @@ const AddEvents = () => {
     }
   }
 
-  return <div>{showAddEvent()}</div>;
+  return <div>{showUpdateEvent()}</div>;
 };
 
-export default AddEvents;
+export default UpdateEvent;
