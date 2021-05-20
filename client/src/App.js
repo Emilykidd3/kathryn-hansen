@@ -15,6 +15,7 @@ import Dashboard from "./pages/Dashboard";
 import AddPhoto from "./pages/AddPhoto";
 import AddEvent from "./pages/AddEvent";
 import AddTags from "./pages/AddTags";
+import UpdateEvents from "./pages/UpdateEvent";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -41,6 +42,7 @@ function App() {
             <Route exact path="/addevent" component={AddEvent} />
             <Route exact path="/addtags" component={AddTags} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/updateevents" component={UpdateEvents} />
             <Route component={NoMatch} />
           </Switch>
         </div>

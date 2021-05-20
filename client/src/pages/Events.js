@@ -6,6 +6,7 @@ import { EmptySpace } from "../components/EmptySpace";
 import { Container, Row, Col, Button } from "reactstrap";
 import dateFormat from "../utils/dateFormat";
 import { Divider } from "../components/Divider";
+import { Link } from "react-router-dom";
 
 import Auth from "../utils/auth";
 
@@ -85,17 +86,20 @@ const Events = () => {
                           Learn More
                         </a>
                       </Button>
-                      <Button
-                        style={{
-                          marginBottom: "8px",
-                          color: "white",
-                          backgroundColor: "#A66D60",
-                          border: "solid 1px #A66D60",
-                          margin: "auto auto",
-                        }}
-                      >
-                        Update Event
-                      </Button>
+                      <Link to="/updateevents">
+                        {" "}
+                        <Button
+                          style={{
+                            marginBottom: "8px",
+                            color: "white",
+                            backgroundColor: "#A66D60",
+                            border: "solid 1px #A66D60",
+                            margin: "auto auto",
+                          }}
+                        >
+                          Update Event
+                        </Button>
+                      </Link>
                       <Button
                         style={{
                           marginBottom: "8px",
