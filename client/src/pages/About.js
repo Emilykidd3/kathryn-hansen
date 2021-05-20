@@ -4,6 +4,7 @@ import { EmptySpace } from "../components/EmptySpace";
 import { MarginP } from "../components/MarginP";
 import { Divider } from "../components/Divider";
 import styled from "styled-components";
+import { GrayDivider } from "../components/GrayDivider";
 
 const StyledA = styled.a`
   text-decoration: none;
@@ -19,7 +20,10 @@ const About = () => {
     <div>
       <EmptySpace />
       <Container>
+      <h2 style={{ textAlign: "center", fontWeight: "200", marginBottom: "20px" }}>ABOUT</h2>
+        <GrayDivider />
         <Row>
+
           <Col>
             <img
               src={`${process.env.PUBLIC_URL}/images/kathryn-hansen.jpg`}

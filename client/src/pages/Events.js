@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { QUERY_ALL_EVENTS } from "../utils/queries";
 import { DELETE_EVENT } from "../utils/mutations";
 import { EmptySpace } from "../components/EmptySpace";
 import { Container, Row, Col, Button } from "reactstrap";
-import dateFormat from "../utils/dateFormat";
 import { Divider } from "../components/Divider";
 import { Link } from "react-router-dom";
+import { GrayDivider } from '../components/GrayDivider';
+import moment from 'moment'
 
 import Auth from "../utils/auth";
+
+moment().format();
 
 const Events = () => {
   const [removeEvent, { error }] = useMutation(DELETE_EVENT);
@@ -17,6 +20,10 @@ const Events = () => {
   const userData = data?.events || {};
 
   if (loading) return <div>Loading...</div>;
+
+  console.log(data)
+
+  const formattedDate = moment(data.events.date).format("MM/DD/YY");
 
   const handleDeleteEvent = async (eventId) => {
     try {
@@ -35,13 +42,15 @@ const Events = () => {
       return (
         <div>
           <EmptySpace />
+          <h2 style={{ textAlign: "center", fontWeight: "200", marginBottom: "20px" }}>UPCOMING EVENTS</h2>
+          <GrayDivider />
           {data.events.length > 0
             ? data.events.map((el) => (
                 <Container style={{ width: "60%" }} key={el._id}>
                   <Row>
                     <Col xs="3">
                       <Row>
-                        <h5 sstyle={{ fontWeight: "lighter" }}>{el.date}</h5>
+                        <h5 style={{ fontWeight: "light" }}>{formattedDate}</h5>
                       </Row>
                       <Row>
                         <p style={{ color: "#393D3F" }}>
@@ -64,13 +73,14 @@ const Events = () => {
                       </Row>
                     </Col>
                     <Col xs="3" style={{ display: "flex" }}>
+                        <div>
                       <Button
                         style={{
-                          marginBottom: "8px",
                           color: "white",
                           backgroundColor: "#A66D60",
                           border: "solid 1px #A66D60",
-                          margin: "auto auto",
+                          marginBottom: "8px",
+                          justifyContent: "center"
                         }}
                       >
                         <a
@@ -94,7 +104,7 @@ const Events = () => {
                             color: "white",
                             backgroundColor: "#A66D60",
                             border: "solid 1px #A66D60",
-                            margin: "auto auto",
+                            justifyContent: "center"
                           }}
                         >
                           Update Event
@@ -107,11 +117,13 @@ const Events = () => {
                           backgroundColor: "#A66D60",
                           border: "solid 1px #A66D60",
                           margin: "auto auto",
+                          justifyContent: "center"
                         }}
                         onClick={() => handleDeleteEvent(el._id)}
                       >
                         Delete Event
                       </Button>
+                      </div>
                     </Col>
                     <Divider
                       style={{
@@ -126,15 +138,18 @@ const Events = () => {
         </div>
       );
     } else {
+        return(
       <div>
         <EmptySpace />
+        <h2 style={{ textAlign: "center", fontWeight: "200", marginBottom: "20px" }}>UPCOMING EVENTS</h2>
+        <GrayDivider />
         {data.events.length > 0
           ? data.events.map((el) => (
               <Container style={{ width: "60%" }}>
                 <Row>
                   <Col xs="3">
                     <Row>
-                      <h5 sstyle={{ fontWeight: "lighter" }}>{el.date}</h5>
+                      <h5 style={{ fontWeight: "light" }}>{formattedDate}</h5>
                     </Row>
                     <Row>
                       <p style={{ color: "#393D3F" }}>
@@ -190,7 +205,8 @@ const Events = () => {
               </Container>
             ))
           : ""}
-      </div>;
+      </div>
+        )
     }
   }
   return <div>{showEvent()}</div>;

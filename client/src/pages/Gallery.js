@@ -13,6 +13,7 @@ import {
   Row,
 } from "reactstrap";
 import { EmptySpace } from "../components/EmptySpace";
+import { GrayDivider } from "../components/GrayDivider";
 // import { QUERY_ALL_GALLERY } from "../utils/queries";
 
 //map inside
@@ -35,6 +36,7 @@ const Gallery = () => {
       >
         GALLERY
       </h2>
+      <GrayDivider />
       <Container>
         <Row>
           <CardGroup style={{ width: "90%", margin: "0 auto" }}>
