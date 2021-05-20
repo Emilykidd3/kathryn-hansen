@@ -14,7 +14,7 @@ export const LOGIN = gql`
 export const ADD_ADMIN = gql`
   mutation addAdmin($email: String!, $password: String!) {
     addAdmin(email: $email, password: $password) {
-     token
+      token
       admin {
         _id
       }
@@ -23,11 +23,12 @@ export const ADD_ADMIN = gql`
 `;
 
 export const ADD_GALLERY = gql`
-  mutation addGallery($title: String, $description: String) {
-    addGallery(title: $title, description: $description) {
+  mutation addGallery($input: Database, $image: Upload) {
+    addGallery(input: $input, image: $image) {
+      _id
       title
       description
-      image
+      imageId
       link
       size
       price

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
-import ApolloClient from "apollo-boost";
+import { client } from "./utils/apollo";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -19,28 +19,15 @@ import AddTags from "./pages/AddTags";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import { EmptySpace } from "./components/EmptySpace";
-import "./App.css"
+import "./App.css";
 
 // import { StoreProvider } from './utils/GlobalState';
-
-// are we / should we be using a token
-const client = new ApolloClient({
-  request: (operation) => {
-    const token = localStorage.getItem("id_token");
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  },
-  uri: "/graphql",
-});
 
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>       
+        <div>
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
