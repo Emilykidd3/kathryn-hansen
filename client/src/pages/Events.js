@@ -23,7 +23,7 @@ const Events = () => {
 
   console.log(data)
 
-  const formattedDate = moment(data).format("MM/DD/YY");
+  const formattedDate = moment(data.events.date).format("MM/DD/YY");
 
   const handleDeleteEvent = async (eventId) => {
     try {
@@ -50,7 +50,7 @@ const Events = () => {
                   <Row>
                     <Col xs="3">
                       <Row>
-                        <h5 sstyle={{ fontWeight: "lighter" }}>{formattedDate}</h5>
+                        <h5 style={{ fontWeight: "light" }}>{formattedDate}</h5>
                       </Row>
                       <Row>
                         <p style={{ color: "#393D3F" }}>
@@ -73,13 +73,14 @@ const Events = () => {
                       </Row>
                     </Col>
                     <Col xs="3" style={{ display: "flex" }}>
+                        <div>
                       <Button
                         style={{
-                          marginBottom: "8px",
                           color: "white",
                           backgroundColor: "#A66D60",
                           border: "solid 1px #A66D60",
-                          margin: "auto auto",
+                          marginBottom: "8px",
+                          justifyContent: "center"
                         }}
                       >
                         <a
@@ -103,7 +104,7 @@ const Events = () => {
                             color: "white",
                             backgroundColor: "#A66D60",
                             border: "solid 1px #A66D60",
-                            margin: "auto auto",
+                            justifyContent: "center"
                           }}
                         >
                           Update Event
@@ -116,11 +117,13 @@ const Events = () => {
                           backgroundColor: "#A66D60",
                           border: "solid 1px #A66D60",
                           margin: "auto auto",
+                          justifyContent: "center"
                         }}
                         onClick={() => handleDeleteEvent(el._id)}
                       >
                         Delete Event
                       </Button>
+                      </div>
                     </Col>
                     <Divider
                       style={{
@@ -146,7 +149,7 @@ const Events = () => {
                 <Row>
                   <Col xs="3">
                     <Row>
-                      <h5 sstyle={{ fontWeight: "lighter" }}>{el.date}</h5>
+                      <h5 style={{ fontWeight: "light" }}>{formattedDate}</h5>
                     </Row>
                     <Row>
                       <p style={{ color: "#393D3F" }}>
