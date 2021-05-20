@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { QUERY_ALL_EVENTS } from "../utils/queries";
 import { DELETE_EVENT } from "../utils/mutations";
 import { EmptySpace } from "../components/EmptySpace";
 import { Container, Row, Col, Button } from "reactstrap";
-import dateFormat from "../utils/dateFormat";
 import { Divider } from "../components/Divider";
 import { Link } from "react-router-dom";
 import { GrayDivider } from '../components/GrayDivider';
+import moment from 'moment'
 
 import Auth from "../utils/auth";
+
+moment().format();
 
 const Events = () => {
   const [removeEvent, { error }] = useMutation(DELETE_EVENT);
@@ -18,6 +20,10 @@ const Events = () => {
   const userData = data?.events || {};
 
   if (loading) return <div>Loading...</div>;
+
+  console.log(data)
+
+  const formattedDate = moment(data).format("MM/DD/YY");
 
   const handleDeleteEvent = async (eventId) => {
     try {
@@ -44,7 +50,7 @@ const Events = () => {
                   <Row>
                     <Col xs="3">
                       <Row>
-                        <h5 sstyle={{ fontWeight: "lighter" }}>{el.date}</h5>
+                        <h5 sstyle={{ fontWeight: "lighter" }}>{formattedDate}</h5>
                       </Row>
                       <Row>
                         <p style={{ color: "#393D3F" }}>
