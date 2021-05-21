@@ -40,7 +40,7 @@ function Navigation() {
             tag="a"
             className="nav-link, hover"
             style={{
-              color: "yellow",
+              color: "#79B791",
               fontWeight: "lighter",
               padding: "0",
               textDecoration: "none",
