@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { QUERY_ALL_EVENTS } from "../utils/queries";
 import { DELETE_EVENT } from "../utils/mutations";
@@ -10,23 +11,58 @@ import { Link } from "react-router-dom";
 
 import Auth from "../utils/auth";
 
+// const updateEventInfo = async () => {
+//   // 
+//     try {
+//       const { data } = await oneevent({
+//         variables: { _id: eventId },
+//       });
+
+//       return 
+
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
+
 const Events = () => {
-  const [removeEvent, { error }] = useMutation(DELETE_EVENT);
+  const [removeEvent, { error }] = useMutation(DELETE_EVENT, {
+    update(cache, { data: { removeEvent } }) {
+      try {
+     
+        // could potentially not exist yet, so wrap in a try...catch
+        const { events } = cache.readQuery({ query: QUERY_ALL_EVENTS });
+        cache.readQuery({
+          query: QUERY_ALL_EVENTS,
+          data: { events: [removeEvent, ...events] }
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    });
+
+  let history = useHistory();
   const { data, loading } = useQuery(QUERY_ALL_EVENTS);
 
-  const userData = data?.events || {};
+  // const userData = data?.events || {};
 
   if (loading) return <div>Loading...</div>;
 
   const handleDeleteEvent = async (eventId) => {
     try {
-      const { data } = await removeEvent({
+      const { mutationResponse } = await removeEvent({
         variables: { _id: eventId },
       });
 
+     
       // removeEventId(eventId);
-    } catch (err) {
-      console.error(err);
+      console.log(mutationResponse);
+      if (mutationResponse) {
+        history.push("/events");
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -41,7 +77,7 @@ const Events = () => {
                   <Row>
                     <Col xs="3">
                       <Row>
-                        <h5 sstyle={{ fontWeight: "lighter" }}>{el.date}</h5>
+                        <h5 style={{ fontWeight: "lighter" }}>{el.date}</h5>
                       </Row>
                       <Row>
                         <p style={{ color: "#393D3F" }}>
@@ -195,4 +231,6 @@ const Events = () => {
   }
   return <div>{showEvent()}</div>;
 };
-export default Events;
+
+// export default { Events, updateEventInfo };
+export default Events

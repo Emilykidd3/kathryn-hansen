@@ -62,7 +62,6 @@ const resolvers = {
   },
   Mutation: {
     addAdmin: async (parent, args) => {
-      console.log(args)
       const admin = await Admin.create(args);
       const token = signToken(admin);
 
@@ -146,12 +145,12 @@ const resolvers = {
     },
 
     // addGalleryTag: async (_, args, context) => {
-    //   console.log(args)
-      // if (context.admin) {
+    //   console.log(args);
+    //   // if (context.admin) {
 
-      //   const updatedGallery = await Gallery.updateOne({
-      //     { _id: gallery._id }
-      //   })
+    //   //   const updatedGallery = await Gallery.updateOne({
+    //   //     { _id: gallery._id }
+    //   //   })
     // },
 
     updateGallery: async (_, args, context) => {
@@ -169,9 +168,11 @@ const resolvers = {
     },
 
     updateEvents: async (_, args, context) => {
+      
+
       if (context.admin) {
-        const updatedEvent = await Events.findByIdAndUpdate(
-          { _id: args._id },
+        const updatedEvent = await Events.findOneAndUpdate(
+          { title: args.title },
           {
             $set: { ...args },
           },
@@ -233,7 +234,6 @@ const resolvers = {
     },
 
     login: async (parent, { email, password }) => {
-      console.log(email, password)
       const admin = await Admin.findOne({ email });
 
       if (!admin) {

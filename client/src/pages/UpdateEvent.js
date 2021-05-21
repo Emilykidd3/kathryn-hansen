@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { UPDATE_EVENT } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const UpdateEvent = () => {
+const UpdateEvents = () => {
   const [formState, setFormState] = useState({
     title: "",
     date: "",
@@ -20,13 +20,14 @@ const UpdateEvent = () => {
     link: "",
   });
   const [updateEvent, { error }] = useMutation(UPDATE_EVENT);
+  let history = useHistory();
 
   const handleFormSubmit = async (event) => {
+    console.log(formState)
     event.preventDefault();
     try {
       const mutationResponse = await updateEvent({
         variables: {
-          _id: formState._id,
           title: formState.title,
           date: formState.date,
           startTime: formState.startTime,
@@ -41,6 +42,9 @@ const UpdateEvent = () => {
       //   const token = mutationResponse.data.login.token;
       //   Auth.login(token);
       console.log(mutationResponse);
+      if (mutationResponse) {
+        history.push("/events");
+      }
     } catch (e) {
       console.log(e);
     }
@@ -67,6 +71,7 @@ const UpdateEvent = () => {
             }}
           >
             UPDATE EVENT
+            
           </h2>
 
           <Form
@@ -79,7 +84,7 @@ const UpdateEvent = () => {
                 type="title"
                 name="title"
                 id="exampleTitle"
-                placeholder={}
+                placeholder={formState.title}
                 onChange={handleChange}
               />
             </FormGroup>
@@ -171,8 +176,10 @@ const UpdateEvent = () => {
                 border: "solid 1px #A66D60",
               }}
             >
-              Submit
+              Make Updates Happen Now Please
+              
             </Button>
+          
           </Form>
         </div>
       );
@@ -201,7 +208,7 @@ const UpdateEvent = () => {
                     textDecoration: "none",
                   }}
                 >
-                  Login
+                  Make Updates Happen Now Please
                 </a>
               </Button>
             </div>
@@ -214,4 +221,4 @@ const UpdateEvent = () => {
   return <div>{showUpdateEvent()}</div>;
 };
 
-export default UpdateEvent;
+export default UpdateEvents;

@@ -63,16 +63,6 @@ export const UPDATE_GALLERY = gql`
       price
       availability
       tag
-      }
-    }
-  
-`;
-
-export const DELETE_GALLERY = gql`
-  mutation deleteGallery($_id: ID) {
-    deleteGallery(_id: $_id) {
-      _id
-      title
     }
   }
 `;
@@ -121,7 +111,6 @@ export const ADD_EVENT = gql`
 `;
 export const UPDATE_EVENT = gql`
   mutation updateEvents(
-    $_id: ID!
     $title: String
     $date: String
     $startTime: String
@@ -133,7 +122,6 @@ export const UPDATE_EVENT = gql`
     $link: String
   ) {
     updateEvents(
-      _id: $_id
       title: $title
       date: $date
       startTime: $startTime
@@ -144,7 +132,7 @@ export const UPDATE_EVENT = gql`
       zip: $zip
       link: $link
     ) {
-      id
+      _id
       title
       address
       city

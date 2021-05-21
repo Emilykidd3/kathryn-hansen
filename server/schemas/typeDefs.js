@@ -92,7 +92,6 @@ const typeDefs = gql`
       link: String
     ): Events
     updateEvents(
-      _id: ID!
       title: String
       address: String
       city: String
