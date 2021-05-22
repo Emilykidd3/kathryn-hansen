@@ -9,15 +9,12 @@ export const QUERY_ADMIN = gql`
         _id
         title
         description
-        image
         link
+        imageId
         size
         price
         availability
-        tag {
-          _id
-          name
-        }
+        tag
       }
       events {
         _id
@@ -41,41 +38,38 @@ export const QUERY_ADMIN = gql`
 
 export const QUERY_ALL_GALLERY = gql`
   {
-    gallery {
+    galleries {
       _id
       title
       description
-      image
       link
+      imageId
       size
       price
       availability
-      tag {
-        _id
-        name
-      }
+      tag
     }
   }
 `;
 
-export const QUERY_TAG_GALLERY = gql`
-  query getGallery($tag: ID) {
-    gallery(tag: $tag) {
-      _id
-      title
-      description
-      image
-      link
-      size
-      price
-      availability
-      tag {
-        _id
-        name
-      }
-    }
-  }
-`;
+// export const QUERY_TAG_GALLERY = gql`
+//   query getGallery($tag: ID) {
+//     gallery(tag: $tag) {
+//       _id
+//       title
+//       description
+//       image
+//       link
+//       size
+//       price
+//       availability
+//       tag {
+//         _id
+//         name
+//       }
+//     }
+//   }
+// `;
 
 export const QUERY_ONE_GALLERY = gql`
   query gallery($id: ID) {
@@ -83,15 +77,12 @@ export const QUERY_ONE_GALLERY = gql`
       _id
       title
       description
-      image
       link
+      imageId
       size
       price
       availability
-      tag {
-        _id
-        name
-      }
+      tag
     }
   }
 `;
@@ -113,9 +104,9 @@ export const QUERY_ALL_EVENTS = gql`
   }
 `;
 
-export const QUERY_EVENTS = gql`
-  query getEvent($events: title) {
-    events(event: $title) {
+export const QUERY_EVENT = gql`
+  query event($id: ID) {
+    event(_id: $id) {
       _id
       title
       address

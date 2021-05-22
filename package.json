@@ -2,13 +2,15 @@
   "name": "kathryn-hansen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "heroku-postbuild": "cd client && npm run build"
+    "heroku-postbuild": "cd client && npm run build",
+    "seed": "node server/config/seeds.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +23,15 @@
   },
   "homepage": "https://github.com/Emilykidd3/kathryn-hansen#readme",
   "dependencies": {
-    "concurrently": "^6.1.0",
+    "axios": "^0.21.1",
+    "cloudinary": "^1.25.1",
+    "cloudinary-react": "^1.7.0",
     "if-env": "^1.0.4",
-    "jwt-decode": "^3.1.2"
+    "moment": "^2.29.1",
+    "path": "^0.12.7",
+    "react-cloudinary-upload-widget": "^1.4.3"
+  },
+  "devDependencies": {
+    "concurrently": "^6.1.0"
   }
 }

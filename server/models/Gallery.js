@@ -12,14 +12,11 @@ const gallerySchema = new Schema({
     type: String,
     trim: true,
   },
-  image: {
-    type: String,
-  },
   link: {
     type: String,
   },
-  tag: {
-    type: Array,
+  imageId: {
+    type: String,
   },
   size: {
     type: String,
@@ -31,6 +28,10 @@ const gallerySchema = new Schema({
   availability: {
     type: String,
   },
+  // tag: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Tags'
+  // },
 });
 
 const Gallery = mongoose.model("Gallery", gallerySchema);
