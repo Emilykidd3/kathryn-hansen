@@ -68,6 +68,8 @@ Please visit the deployed site [here](https://kathryn-hansen.herokuapp.com/).
 
 ## Screenshot
 
+![Screenshot of site](ScreenShot.png)
+
 ## Contribution
 
 All contributions are welcome. Please visit the [issues](https://github.com/Emilykidd3/kathryn-hansen) tab to contribute.
