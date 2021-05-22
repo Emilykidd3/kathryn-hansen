@@ -22,6 +22,8 @@ const Gallery = () => {
   const userData = data?.galleries || {};
   //map over galleries
 
+  console.log(data);
+
   if (loading) {
     return (
       <div>
@@ -32,6 +34,7 @@ const Gallery = () => {
   }
 
   console.log(data);
+  console.log(data.galleries[1]);
 
   return (
     <div>
@@ -51,11 +54,8 @@ const Gallery = () => {
           <CardGroup style={{ width: "90%", margin: "0 auto" }}>
             {data.galleries.length > 0
               ? data.galleries.map((el) => (
-                  <Col xs="4" >
-                    <Card
-                      key={el._id}
-                      style={{ marginLeft: "10px", marginRight: "10px" }}
-                    >
+                  <Col xs="4" key={el._id}>
+                    <Card style={{ marginLeft: "10px", marginRight: "10px" }}>
                       <CardImg
                         top
                         width="100%"
