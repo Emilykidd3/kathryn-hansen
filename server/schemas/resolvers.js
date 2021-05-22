@@ -145,15 +145,6 @@ const resolvers = {
       throw new AuthenticationError("You need to be an admin!");
     },
 
-    addGalleryTag: async (_, args, context) => {
-      console.log(args);
-      // if (context.admin) {
-
-      //   const updatedGallery = await Gallery.updateOne({
-      //     { _id: gallery._id }
-      //   })
-    },
-
     updateGallery: async (_, args, context) => {
       if (context.admin) {
         const updatedGallery = await Gallery.findByIdAndUpdate(

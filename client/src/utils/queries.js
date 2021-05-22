@@ -104,9 +104,9 @@ export const QUERY_ALL_EVENTS = gql`
   }
 `;
 
-export const QUERY_EVENTS = gql`
-  query getEvent($id: ID) {
-    events(_id: $id) {
+export const QUERY_EVENT = gql`
+  query event($id: ID) {
+    event(_id: $id) {
       _id
       title
       address
