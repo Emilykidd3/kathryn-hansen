@@ -10,7 +10,7 @@ import {
   CardBody,
   Container,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 import { EmptySpace } from "../components/EmptySpace";
 import { GrayDivider } from "../components/GrayDivider";
@@ -51,40 +51,40 @@ const Gallery = () => {
           <CardGroup style={{ width: "90%", margin: "0 auto" }}>
             {data.galleries.length > 0
               ? data.galleries.map((el) => (
-                <Col xs="4">
-                  <Card style={{ marginLeft: "10px", marginRight: "10px" }}>
-                    <CardImg
-                      top
-                      width="100%"
-                      src={el.image}
-                      alt="Card image cap"
-                    />
-                    <CardBody>
-                      <CardTitle tag="h5" style={{ fontWeight: "lighter" }}>
-                        {el.title}
-                      </CardTitle>
-                      <CardSubtitle
-                        tag="h6"
-                        className="mb-2 text-muted"
-                        style={{ fontWeight: "lighter" }}
-                      >
-                        Colored Pencil on Paper
-                      </CardSubtitle>
-                      <a
-                        href={el.link}
-                        target="_blank"
-                      >
-                        <Button
-                          style={{
-                            backgroundColor: "#A66D60",
-                            fontWeight: "lighter",
-                          }}
+                  <Col xs="4" >
+                    <Card
+                      key={el._id}
+                      style={{ marginLeft: "10px", marginRight: "10px" }}
+                    >
+                      <CardImg
+                        top
+                        width="100%"
+                        src={el.image}
+                        alt="Card image cap"
+                      />
+                      <CardBody>
+                        <CardTitle tag="h5" style={{ fontWeight: "lighter" }}>
+                          {el.title}
+                        </CardTitle>
+                        <CardSubtitle
+                          tag="h6"
+                          className="mb-2 text-muted"
+                          style={{ fontWeight: "lighter" }}
                         >
-                          Purchase Prints
-                        </Button>
-                      </a>
-                    </CardBody>
-                  </Card>
+                          Colored Pencil on Paper
+                        </CardSubtitle>
+                        <a href={el.link} target="_blank">
+                          <Button
+                            style={{
+                              backgroundColor: "#A66D60",
+                              fontWeight: "lighter",
+                            }}
+                          >
+                            Purchase Prints
+                          </Button>
+                        </a>
+                      </CardBody>
+                    </Card>
                   </Col>
                 ))
               : ""}
