@@ -34,7 +34,7 @@ function Navigation() {
 
     if (Auth.loggedIn()) {
       return (
-        phone <= window.innerWidth ? <CollapsedNav /> : 
+        phone >= window.innerWidth ? <CollapsedNav /> : 
         <UncontrolledDropdown setActiveFromChild>
           <DropdownToggle
             tag="a"
@@ -89,7 +89,7 @@ function Navigation() {
   }
 
   return (
-    phone <= window.innerWidth ? <CollapsedNav /> :
+    phone >= window.innerWidth ? <CollapsedNav /> :
     <Navbar
       light
       expand="md"
