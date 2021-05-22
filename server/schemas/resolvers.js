@@ -6,8 +6,8 @@ const cloudinary = require("cloudinary").v2;
 const path = require("path");
 const { createWriteStream, unlink } = require("fs");
 const { GraphQLUpload } = require("graphql-upload");
-
 console.log(cloudinary.config());
+
 const resolvers = {
   Upload: GraphQLUpload,
   Query: {
