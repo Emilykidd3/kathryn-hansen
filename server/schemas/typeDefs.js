@@ -19,6 +19,7 @@ const typeDefs = gql`
     price: String
     availability: String
     tag: String
+    image: String
   }
 
   type Events {

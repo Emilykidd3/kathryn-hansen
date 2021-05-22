@@ -28,6 +28,9 @@ const gallerySchema = new Schema({
   availability: {
     type: String,
   },
+  image: {
+    type: String,
+  },
   // tag: {
   //   type: Schema.Types.ObjectId,
   //   ref: 'Tags'
