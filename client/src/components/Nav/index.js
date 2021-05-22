@@ -40,7 +40,7 @@ function Navigation() {
             tag="a"
             className="nav-link, hover"
             style={{
-              color: "yellow",
+              color: "black",
               fontWeight: "lighter",
               padding: "0",
               textDecoration: "none",
@@ -51,7 +51,11 @@ function Navigation() {
             <DropdownItem
               tag="a"
               href="/dashboard"
-              style={{ backgroundColor: "white", color: "black" }}
+              style={{
+                backgroundColor: "white",
+                color: "#A66D60",
+                fontWeight: "lighter",
+              }}
               active
             >
               Dashboard
@@ -59,7 +63,11 @@ function Navigation() {
             <DropdownItem
               tag="a"
               href="/blah"
-              style={{ backgroundColor: "white", color: "black" }}
+              style={{
+                backgroundColor: "white",
+                color: "black",
+                fontWeight: "lighter",
+              }}
               active
             >
               <a
@@ -67,7 +75,7 @@ function Navigation() {
                 onClick={() => Auth.logout()}
                 style={{
                   backgroundColor: "white",
-                  color: "black",
+                  color: "#A66D60",
                   textDecoration: "none",
                 }}
               >
