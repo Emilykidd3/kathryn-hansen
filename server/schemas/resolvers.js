@@ -1,11 +1,12 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { Admin, Events, Gallery, Tags } = require("../models");
 const { signToken } = require("../utils/auth");
-require("dotenv").config();
+
 const cloudinary = require("cloudinary").v2;
 const path = require("path");
 const { createWriteStream, unlink } = require("fs");
 const { GraphQLUpload } = require("graphql-upload");
+require("dotenv").config();
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -71,7 +72,7 @@ const resolvers = {
     addGallery: async (_, args, context) => {
       if (context.admin) {
         let { image, input } = args;
-
+        console.log(image);
         const { createReadStream, filename } = await image;
         // reads what is coming in from front end
         await new Promise((res) => {
