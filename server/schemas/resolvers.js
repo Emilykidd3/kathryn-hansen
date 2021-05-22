@@ -6,6 +6,7 @@ const cloudinary = require("cloudinary").v2;
 const path = require("path");
 const { createWriteStream, unlink } = require("fs");
 const { GraphQLUpload } = require("graphql-upload");
+console.log(cloudinary.config());
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -71,7 +72,7 @@ const resolvers = {
     addGallery: async (_, args, context) => {
       if (context.admin) {
         let { image, input } = args;
-
+        console.log("This is the image from resolvers.", image);
         const { createReadStream, filename } = await image;
         // reads what is coming in from front end
         await new Promise((res) => {
@@ -91,7 +92,7 @@ const resolvers = {
           }
         );
 
-        console.log(upload);
+        console.log("This is upload.", upload);
 
         input.link = upload.url;
         input.imageId = upload.public_id;

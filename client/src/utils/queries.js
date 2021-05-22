@@ -1,7 +1,6 @@
 import gql from "graphql-tag";
 
 export const QUERY_ADMIN = gql`
-
   {
     admin {
       _id
@@ -39,7 +38,7 @@ export const QUERY_ADMIN = gql`
 
 export const QUERY_ALL_GALLERY = gql`
   {
-    gallery {
+    galleries {
       _id
       title
       description

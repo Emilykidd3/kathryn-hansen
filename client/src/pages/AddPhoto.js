@@ -20,11 +20,12 @@ const AddPhoto = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("this is image", file);
     console.log(formState);
     try {
       const mutationResponse = await addGallery({
         variables: {
+          image: file,
           input: {
             title: formState.title,
             description: formState.description,
@@ -33,7 +34,6 @@ const AddPhoto = () => {
             availability: formState.availability,
             tag: formState.tag,
           },
-          image: file,
         },
       });
       // const token = mutationResponse.data.login.token;
