@@ -68,7 +68,7 @@ Please visit the deployed site [here](https://kathryn-hansen.herokuapp.com/).
 
 ## Screenshot
 
-![Screenshot of site](ScreenShot.png)
+![Screenshot of site](Screenshot.png)
 
 ## Contribution
 
