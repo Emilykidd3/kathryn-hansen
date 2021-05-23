@@ -73,6 +73,7 @@ const Gallery = () => {
                         >
                           Colored Pencil on Paper
                         </CardSubtitle>
+                        {/* if link is null, put contact artist */}
                         <a href={el.link} target="_blank">
                           <Button
                             style={{

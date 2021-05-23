@@ -168,7 +168,7 @@ const Events = () => {
                   </Row>
                 </Container>
               ))
-            : ""}
+            : <p style={{textAlign: "center"}}>No upcoming events, check back soon!</p>}
         </div>
       );
     } else {
@@ -185,7 +185,7 @@ const Events = () => {
             UPCOMING EVENTS
           </h2>
           <GrayDivider />
-          {data.events.length > 0
+          {data.events.length >= 1
             ? data.events.map((el) => (
                 <Container style={{ width: "60%" }}>
                   <Row>
@@ -246,7 +246,7 @@ const Events = () => {
                   </Row>
                 </Container>
               ))
-            : ""}
+            : <p style={{textAlign: "center"}}>No upcoming events, check back soon!</p>}
         </div>
       );
     }
