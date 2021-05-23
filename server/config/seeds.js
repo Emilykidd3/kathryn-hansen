@@ -18,7 +18,7 @@ db.once("open", async () => {
     {
       title: "The Fast and the Fuuurriest",
       description: "Colored Pencil on Paper",
-      image: "the-fast-and-the-fuuurriest.jpg",
+      image: "https://res.cloudinary.com/dej8kpmbw/image/upload/v1621185399/kathryn-hansen/the-fast-and-the-fuuurriest_u5hvdr.jpg",
       link: null,
       tag: "Landscapes",
       size: "12x20",
