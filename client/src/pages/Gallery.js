@@ -17,7 +17,7 @@ import { GrayDivider } from "../components/GrayDivider";
 import { QUERY_ALL_GALLERY } from "../utils/queries";
 import {MobileEmptySpace} from '../components/MobileEmptySpace';
 
-const phone = 768
+const phone = 415
 
 //map inside
 const Gallery = () => {
