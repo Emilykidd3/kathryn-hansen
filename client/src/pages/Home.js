@@ -9,7 +9,7 @@ import Events from "./Events";
 
 // opactiy layer and darkening css or actual photo
 
-const phone = 415
+const phone = 415;
 
 const Home = () => {
   return phone >= window.innerWidth ? (
