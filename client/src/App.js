@@ -16,6 +16,7 @@ import AddPhoto from "./pages/AddPhoto";
 import AddEvent from "./pages/AddEvent";
 import AddTags from "./pages/AddTags";
 import UpdateEvents from "./pages/UpdateEvent";
+import CollapsedNav from './components/CollpasedNav';
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -30,6 +31,7 @@ function App() {
       <Router>
         <div>
           <Nav />
+          {/* <CollapsedNav /> */}
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />

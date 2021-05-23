@@ -10,10 +10,10 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Collapse,
 } from "reactstrap";
 import styled from "styled-components";
 import Auth from "../../utils/auth";
+import CollapsedNav from "../CollpasedNav";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -24,17 +24,17 @@ const StyledLink = styled(Link)`
   font-weight: lighter;
 `;
 
-const phone = {
-  "max-width": "768px",
-};
+const phone = 768
 
 function Navigation() {
-  // const [collapsed, setCollapsed] = useState(true);
 
-  // const toggleNavbar = () => setCollapsed(!collapsed);
+  
+
   function showLoggedIn() {
+
     if (Auth.loggedIn()) {
       return (
+        phone >= window.innerWidth ? <CollapsedNav /> : 
         <UncontrolledDropdown setActiveFromChild>
           <DropdownToggle
             tag="a"
@@ -89,6 +89,7 @@ function Navigation() {
   }
 
   return (
+    phone >= window.innerWidth ? <CollapsedNav /> :
     <Navbar
       light
       expand="md"
