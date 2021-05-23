@@ -68,13 +68,13 @@ function CollapsedNav() {
             </Collapse>
           </Navbar>
         </Col>
-        <Col xs="10">
+        <Col xs="10" style={{display: "flex"}}>
           <h1
             style={{
-              marginLeft: "10px",
-              marginRight: "10px",
-              fontSize: "40px",
+              margin: "auto 10px",
+              fontSize: "33px",
               fontWeight: "200",
+              alignItems: "center"
             }}
           >
             KATHRYN HANSEN

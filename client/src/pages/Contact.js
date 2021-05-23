@@ -5,7 +5,7 @@ import { Container, Row, Col } from "reactstrap";
 import { GrayDivider } from "../components/GrayDivider";
 import { MobileEmptySpace } from "../components/MobileEmptySpace";
 
-const phone = 768
+const phone = 415
 
 const Contact = () => {
   // handleSubmit( event ) {
