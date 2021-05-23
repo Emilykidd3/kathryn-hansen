@@ -10,21 +10,132 @@ import { faRssSquare } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
 import { InputGroup, InputGroupText, InputGroupAddon, Input } from "reactstrap";
 
+const phone = 768;
+
 function Footer() {
   return (
+    phone >= window.innerWidth ? 
+    <div style={{ backgroundColor: "#DDE0E3", width: "100%", padding: "40px" }}>
+      <Container>
+        <Row style={{ fontWeight: "lighter", width: "100%" }}>
+          <Col style={{ width: "100%" }}>
+            <p style={{ textAlign: "center" }}>JOIN MY EMAIL LIST</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col style={{ width: "100%", marginBottom: "30px" }}>
+            <InputGroup>
+              <Input placeholder="EMAIL" />
+              <InputGroupAddon addonType="append">
+                <InputGroupText style={{ fontWeight: "lighter" }}>
+                  SIGN UP
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+          </Col>
+        </Row>
+        <Row style={{ alignItems: "center" }}>
+          <ul
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              listStyleType: "none",
+            }}
+          >
+            <li>
+              <a
+                href="https://www.facebook.com/kathrynhansen9"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FontAwesomeIcon
+                  icon={faFacebookSquare}
+                  size="2x"
+                  style={{ color: "#393D3F" }}
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.pinterest.com/kathryn_hansen8/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FontAwesomeIcon
+                  icon={faPinterestSquare}
+                  size="2x"
+                  style={{ marginLeft: "5px", color: "#393D3F" }}
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/kathrynhansendrawings/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FontAwesomeIcon
+                  icon={faInstagramSquare}
+                  size="2x"
+                  style={{ marginLeft: "5px", color: "#393D3F" }}
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://artblogbykat.blogspot.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FontAwesomeIcon
+                  icon={faRssSquare}
+                  size="2x"
+                  style={{ marginLeft: "5px", color: "#393D3F" }}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="mailto:kh@kathrynhansen.com">
+                <FontAwesomeIcon
+                  icon={faEnvelopeSquare}
+                  size="2x"
+                  style={{ marginLeft: "5px", color: "#393D3F" }}
+                />
+              </a>
+            </li>
+          </ul>
+        </Row>
+        <Row>
+          <p style={{ textAlign: "center", fontWeight: "lighter" }}>
+            kh@kathrynhansen.com
+          </p>
+        </Row>
+      </Container>
+    </div>
+  :
     <div style={{ backgroundColor: "#DDE0E3", width: "100%", padding: "40px" }}>
       <Container>
         <Row>
           <Col xs="4">
             <Row style={{ alignItems: "center" }}>
-              <ul style={{display: "flex", justifyContent: "center", listStyleType: "none"}}>
+              <ul
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  listStyleType: "none",
+                }}
+              >
                 <li>
                   <a
                     href="https://www.facebook.com/kathrynhansen9"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FontAwesomeIcon icon={faFacebookSquare} size="2x" style={{color: "#393D3F"}}/>
+                    <FontAwesomeIcon
+                      icon={faFacebookSquare}
+                      size="2x"
+                      style={{ color: "#393D3F" }}
+                    />
                   </a>
                 </li>
 
@@ -82,7 +193,9 @@ function Footer() {
               </ul>
             </Row>
             <Row>
-              <p style={{ textAlign: "center", fontWeight: "lighter" }}>kh@kathrynhansen.com</p>
+              <p style={{ textAlign: "center", fontWeight: "lighter" }}>
+                kh@kathrynhansen.com
+              </p>
             </Row>
           </Col>
           <Col xs="2"></Col>
@@ -104,7 +217,7 @@ function Footer() {
         </Row>
       </Container>
     </div>
-  );
+  )
 }
 
 export default Footer;
