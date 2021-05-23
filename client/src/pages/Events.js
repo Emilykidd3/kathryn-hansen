@@ -19,7 +19,7 @@ const Events = () => {
 
   const myEvent = useQuery(QUERY_EVENT);
 
-  const userData = data?.events || {};
+  // const userData = data?.events || {};
 
   if (loading) return <div>Loading...</div>;
 

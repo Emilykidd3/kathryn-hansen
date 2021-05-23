@@ -22,7 +22,7 @@ const phone = 768
 //map inside
 const Gallery = () => {
   const { data, loading } = useQuery(QUERY_ALL_GALLERY);
-  const userData = data?.galleries || {};
+  // const userData = data?.galleries || {};
   //map over galleries
 
   console.log(data);
