@@ -19,7 +19,7 @@ const Events = () => {
   //QUERY ALL EVENTS TO DISPLAY THEM ON PAGE
   const { data, loading } = useQuery(QUERY_ALL_EVENTS);
 
-  const myEvent = useQuery(QUERY_EVENT);
+  // const myEvent = useQuery(QUERY_EVENT);
 
   // const userData = data?.events || {};
 
@@ -38,15 +38,15 @@ const Events = () => {
   };
 
   const handleUpdateEvent = async (eventID) => {
-    const myArray = [eventID];
-    try {
-      const [updateData, { error }] = await myEvent({
-        variables: { _id: myArray },
-      });
-    } catch (err) {
-      console.error(err);
-    }
-    console.log(myArray);
+    // const myArray = [eventID];
+    // try {
+    //   const [updateData, { error }] = await myEvent({
+    //     variables: { _id: myArray },
+    //   });
+    // } catch (err) {
+    //   console.error(err);
+    // }
+    // console.log(myArray);
     // console.log(myEvent);
   };
 
@@ -261,7 +261,7 @@ const Events = () => {
           <GrayDivider />
           {data.events.length >= 1
             ? data.events.map((el) => (
-                <Container style={{ width: "60%" }}>
+                <Container key={el._id} style={{ width: "60%" }}>
                   <Row>
                     <Col xs="3">
                       <Row>
@@ -275,7 +275,7 @@ const Events = () => {
                     </Col>
                     <Col xs="6">
                       <Row>
-                        <h4 key={el._id}>{el.title}</h4>
+                        <h4>{el.title}</h4>
                       </Row>
                       <Row>
                         <p style={{ color: "#393D3F" }}>
