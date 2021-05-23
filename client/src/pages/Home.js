@@ -9,7 +9,7 @@ import Events from "./Events";
 
 // opactiy layer and darkening css or actual photo
 
-const phone = 768;
+const phone = 415;
 
 const Home = () => {
   return phone >= window.innerWidth ? (
@@ -29,6 +29,7 @@ const Home = () => {
             position: "absolute",
             top: "70%",
             left: "50%",
+            width: "80%",
             transform: "translate(-50%, -50%)",
             textAlign: "center",
           }}

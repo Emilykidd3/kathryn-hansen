@@ -15,9 +15,9 @@ import {
 import { EmptySpace } from "../components/EmptySpace";
 import { GrayDivider } from "../components/GrayDivider";
 import { QUERY_ALL_GALLERY } from "../utils/queries";
-import {MobileEmptySpace} from '../components/MobileEmptySpace';
+import { MobileEmptySpace } from "../components/MobileEmptySpace";
 
-const phone = 768
+const phone = 415;
 
 //map inside
 const Gallery = () => {
@@ -39,8 +39,7 @@ const Gallery = () => {
   console.log(data);
   console.log(data.galleries[1]);
 
-  return (
-    phone >= window.innerWidth ? 
+  return phone >= window.innerWidth ? (
     <div>
       <MobileEmptySpace />
       <h2
@@ -57,9 +56,16 @@ const Gallery = () => {
         <Row>
           <CardGroup style={{ width: "90%", margin: "0 auto" }}>
             <Col xs="12">
-            {data.galleries.length > 0
-              ? data.galleries.map((el) => (
-                    <Card key={el._id} style={{ marginLeft: "10px", marginRight: "10px", marginBottom: "10px" }}>
+              {data.galleries.length > 0
+                ? data.galleries.map((el) => (
+                    <Card
+                      key={el._id}
+                      style={{
+                        marginLeft: "10px",
+                        marginRight: "10px",
+                        marginBottom: "10px",
+                      }}
+                    >
                       <CardImg
                         top
                         width="100%"
@@ -90,14 +96,14 @@ const Gallery = () => {
                         </a>
                       </CardBody>
                     </Card>
-                ))
+                  ))
                 : ""}
-              </Col>
+            </Col>
           </CardGroup>
         </Row>
       </Container>
     </div>
-     :
+  ) : (
     <div>
       <EmptySpace />
       <h2

@@ -5,7 +5,7 @@ import { Container, Row, Col } from "reactstrap";
 import { GrayDivider } from "../components/GrayDivider";
 import { MobileEmptySpace } from "../components/MobileEmptySpace";
 
-const phone = 768
+const phone = 415;
 
 const Contact = () => {
   // handleSubmit( event ) {
@@ -13,12 +13,11 @@ const Contact = () => {
   //   console.log(this.state);
   // }
 
-  return (
-    phone >= window.innerWidth ? 
+  return phone >= window.innerWidth ? (
     <div>
       <MobileEmptySpace />
       <Container>
-      <h2
+        <h2
           style={{
             textAlign: "center",
             fontWeight: "200",
@@ -29,11 +28,11 @@ const Contact = () => {
         </h2>
         <GrayDivider />
         <Row>
-            <img
-              src={`${process.env.PUBLIC_URL}/images/a-kodiak-moment.jpg`}
-              alt="bear"
-              style={{ width: "80%", margin: "auto auto 15px auto" }}
-            ></img>
+          <img
+            src={`${process.env.PUBLIC_URL}/images/a-kodiak-moment.jpg`}
+            alt="bear"
+            style={{ width: "80%", margin: "auto auto 15px auto" }}
+          ></img>
         </Row>
         <Row>
           <Col>
@@ -86,7 +85,8 @@ const Contact = () => {
           </Col>
         </Row>
       </Container>
-    </div> :
+    </div>
+  ) : (
     <div>
       <EmptySpace />
       <Container>

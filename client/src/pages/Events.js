@@ -12,6 +12,8 @@ import Auth from "../utils/auth";
 
 moment().format();
 
+const phone = 415;
+
 const Events = () => {
   const [removeEvent, { error }] = useMutation(DELETE_EVENT);
   //QUERY ALL EVENTS TO DISPLAY THEM ON PAGE
@@ -65,6 +67,78 @@ const Events = () => {
   function showEvent() {
     if (Auth.loggedIn()) {
       return (
+        phone >= window.innerWidth ?
+        <div>
+          <EmptySpace />
+          <h2
+            style={{
+              textAlign: "center",
+              fontWeight: "200",
+              marginBottom: "20px",
+            }}
+          >
+            UPCOMING EVENTS
+          </h2>
+          <GrayDivider />
+          {data.events.length >= 1
+            ? data.events.map((el) => (
+                <Container key={el._id} style={{ width: "60%" }}>
+                  <Row>
+
+                      <Row>
+                        <h4 style={{textAlign: "center"}}>{el.title}</h4>
+                      </Row>
+                      <Row>
+                        <p style={{ color: "#393D3F", textAlign: "center" }}>
+                          {el.address}
+                          <br />
+                          {el.city},&nbsp;
+                          {el.state}&nbsp;
+                          {el.zip}
+                        </p>
+                      </Row>
+                      <Row>
+                        <h5 style={{ fontWeight: "light", textAlign: "center" }}>{formattedDate}</h5>
+                      </Row>
+                      <Row>
+                        <p style={{ color: "#393D3F", textAlign: "center" }}>
+                          {el.startTime}-{el.endTime}
+                        </p>
+                      </Row>
+                      <Button
+                        style={{
+                          marginBottom: "8px",
+                          color: "white",
+                          backgroundColor: "#A66D60",
+                          border: "solid 1px #A66D60",
+                          margin: "auto auto",
+                        }}
+                      >
+                        <a
+                          href={el.link}
+                          style={{
+                            marginBottom: "8px",
+                            color: "white",
+                            backgroundColor: "#A66D60",
+                            border: "solid 1px #A66D60",
+                            textDecoration: "none",
+                          }}
+                        >
+                          Learn More
+                        </a>
+                      </Button>
+                    <Divider
+                      style={{
+                        borderBottom: "solid 1px #A66D60",
+                        width: "100%",
+                      }}
+                    />
+                  </Row>
+                </Container>
+              ))
+            : <p style={{textAlign: "center"}}>No upcoming events, check back soon!</p>}
+        </div>
+        :
         <div>
           <EmptySpace />
           <h2
